@@ -57,6 +57,10 @@ UPDATE_PACKAGE "luci-app-ipsec-server" "Ivaneus/luci-app-ipsec-server" "main" "n
 # turboacc（大杂烩，luci 分支，luci 子目录）
 UPDATE_PACKAGE "luci-app-turboacc" "chenmozhijin/turboacc" "luci" "pkg"
 
+# 修正后的调用：
+UPDATE_PACKAGE "luci-app-ipsec-server" "Ivaneus/luci-app-ipsec-server" "master" "pkg"
+UPDATE_PACKAGE "turboacc" "chenmozhijin/turboacc" "main" "pkg" "luci-app-turboacc shortcut-fe fast-classifier"
+
 
 #更新软件包版本
 UPDATE_VERSION() {
@@ -101,6 +105,7 @@ UPDATE_VERSION() {
 
 #UPDATE_VERSION "软件包名" "测试版，true，可选，默认为否"
 UPDATE_VERSION "sing-box"
+
 
 
 
