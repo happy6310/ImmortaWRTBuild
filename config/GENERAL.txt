@@ -3,10 +3,12 @@ CONFIG_PACKAGE_momo=y
 CONFIG_PACKAGE_luci-app-momo=y
 
 # 禁用 Clash 体系
-CONFIG_PACKAGE_luci-app-openclash=n
-CONFIG_PACKAGE_clash=n
+CONFIG_PACKAGE_luci-app-openclash=y
+CONFIG_PACKAGE_clash=y
 
 
+# 🆕 新增插件: 其他科学上网与去广告
+CONFIG_PACKAGE_luci-app-adbyby-plus=y
 
 
 # ===== LuCI 常用管理插件 =====
@@ -14,9 +16,9 @@ CONFIG_PACKAGE_luci-app-autoreboot=y
 CONFIG_PACKAGE_luci-app-ttyd=y
 CONFIG_PACKAGE_luci-app-upnp=y
 
-#
-
-CONFIG_PACKAGE_luci-app-ipsec-vpnd=y
+# 🆕 新增插件: 网络加速与工具
+CONFIG_PACKAGE_luci-app-turboacc=y
+CONFIG_PACKAGE_luci-app-arpbind=y
 
 # WireGuard VPN 核心组件
 CONFIG_PACKAGE_kmod-wireguard=y
@@ -30,6 +32,14 @@ CONFIG_PACKAGE_luci-proto-wireguard=y
 CONFIG_PACKAGE_etherwake=y
 #CONFIG_PACKAGE_luci-app-wol=y
 #CONFIG_PACKAGE_luci-app-timewol=y
+
+# 🆕 新增插件: 其他服务
+CONFIG_PACKAGE_luci-app-ipsec-server=y
+CONFIG_PACKAGE_luci-app-ipsec-vpnd=y
+#CONFIG_PACKAGE_luci-app-homeassistant=y
+#CONFIG_PACKAGE_luci-app-webdav=y
+#CONFIG_PACKAGE_luci-app-unblockneteasemusic=y
+
 
 # 方案1：传统 DDNS（轻量）
 CONFIG_PACKAGE_ddns-scripts=y
@@ -65,12 +75,14 @@ CONFIG_PACKAGE_adblock-fast=y
 CONFIG_PACKAGE_luci-app-adblock=y
 CONFIG_PACKAGE_iptables-mod-nat-extra=y
 CONFIG_PACKAGE_iptables-mod-filter=y
-CONFIG_PACKAGE_iptables-mod-conntrack-extra=
+CONFIG_PACKAGE_iptables-mod-conntrack-extra=y
 
+# 🆕 新增插件: 应用商店
+#CONFIG_PACKAGE_luci-app-store=y
 
 # 明确不需要的 LuCI 插件
-CONFIG_PACKAGE_luci-app-filebrowser=n
-CONFIG_PACKAGE_luci-app-usteer=n
+#CONFIG_PACKAGE_luci-app-filebrowser=y
+#CONFIG_PACKAGE_luci-app-usteer=y
 
 
 
@@ -106,7 +118,7 @@ CONFIG_PACKAGE_kmod-usb-net-rndis=y       # 安卓手机 USB 共享
 CONFIG_PACKAGE_kmod-usb-net-rtl8152=y     # 主流 USB 千兆网卡
 
 # 明确禁用的 USB 网络驱动
-CONFIG_PACKAGE_kmod-usb-net-ipheth=n
+# CONFIG_PACKAGE_kmod-usb-net-ipheth=y
 # CONFIG_PACKAGE_kmod-usb-net-huawei-cdc-ncm is not set
 # CONFIG_PACKAGE_kmod-usb-net-rtl8150 is not set
 
