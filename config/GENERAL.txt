@@ -113,8 +113,10 @@ CONFIG_PACKAGE_kmod-usb-xhci=y
 
 # ===== USB 网络 =====
 CONFIG_PACKAGE_kmod-usb-net=y
-CONFIG_PACKAGE_kmod-usb-net-rndis=y       # 安卓手机 USB 共享
-CONFIG_PACKAGE_kmod-usb-net-rtl8152=y     # 主流 USB 千兆网卡
+# 安卓手机 USB 共享
+CONFIG_PACKAGE_kmod-usb-net-rndis=y  
+# 主流 USB 千兆网卡
+CONFIG_PACKAGE_kmod-usb-net-rtl8152=y     
 
 # 明确禁用的 USB 网络驱动
 # CONFIG_PACKAGE_kmod-usb-net-ipheth=y
@@ -200,6 +202,7 @@ CONFIG_PACKAGE_kmod-nft-flow=y
 
 
 CONFIG_PACKAGE_onionshare-cli=n
+
 
 
 
