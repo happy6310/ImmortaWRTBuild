@@ -49,6 +49,10 @@ UPDATE_PACKAGE "argon" "chingjyu/luci-theme-argon" "main"
 UPDATE_PACKAGE "momo" "nikkinikki-org/OpenWrt-momo" "main"
 UPDATE_PACKAGE "qmodem" "FUjr/QModem" "main"
 
+# === VPN / 加速插件 ===
+UPDATE_PACKAGE "luci-app-ipsec-server" "Ivaneus/luci-app-ipsec-server" "master" "name"
+UPDATE_PACKAGE "luci-app-turboacc" "chenmozhijin/turboacc" "master" "pkg"
+
 #更新软件包版本
 UPDATE_VERSION() {
 	local PKG_NAME=$1
@@ -92,3 +96,4 @@ UPDATE_VERSION() {
 
 #UPDATE_VERSION "软件包名" "测试版，true，可选，默认为否"
 UPDATE_VERSION "sing-box"
+
