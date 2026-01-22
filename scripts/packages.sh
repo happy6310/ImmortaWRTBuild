@@ -52,16 +52,19 @@ UPDATE_PACKAGE "argon" "chingjyu/luci-theme-argon" "main"
 UPDATE_PACKAGE "momo" "nikkinikki-org/OpenWrt-momo" "main"
 # UPDATE_PACKAGE "qmodem" "FUjr/QModem" "main"
 
-# UPDATE_PACKAGE "luci-app-ipsec-server" "Ivaneus/luci-app-ipsec-server" "main" "" "luci-app-ipsec-server2"
+#UPDATE_PACKAGE "luci-app-ipsec-server" "Ivaneus/luci-app-ipsec-server" "main" "" "luci-app-ipsec-server2"
 UPDATE_PACKAGE "luci-app-turboacc" "chenmozhijin/turboacc" "luci" "pkg"
 
 # 
-UPDATE_PACKAGE "uci-app-openclash mihomo  \
-        luci-app-ipsec-server \
-        luci-app-homeassistant \
-        luci-app-webdav \
-        luci-app-store  \
-        luci-app-unblockneteasemusic " "kenzok8/small-package" "main" "pkg"
+UPDATE_PACKAGE "luci-app-openclash" "kenzok8/small-package" "main" "pkg"
+UPDATE_PACKAGE "mihomo" "chenmozhijin/turboacc" "main" "pkg"
+UPDATE_PACKAGE "luci-app-ipsec-server" "chenmozhijin/turboacc" "main" "pkg"
+UPDATE_PACKAGE "luci-app-homeassistant" "chenmozhijin/turboacc" "main" "pkg"
+UPDATE_PACKAGE "luci-app-webdav" "chenmozhijin/turboacc" "main" "pkg"
+UPDATE_PACKAGE "luci-app-store" "chenmozhijin/turboacc" "main" "pkg"
+UPDATE_PACKAGE "luci-app-unblockneteasemusic" "chenmozhijin/turboacc" "main" "pkg"
+
+
 
 
 
@@ -108,6 +111,7 @@ UPDATE_VERSION() {
 
 #UPDATE_VERSION "软件包名" "测试版，true，可选，默认为否"
 UPDATE_VERSION "sing-box"
+
 
 
 
