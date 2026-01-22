@@ -1,209 +1,76 @@
-# ===== 科学上网（单一方案：momo）=====
-CONFIG_PACKAGE_momo=y
-CONFIG_PACKAGE_luci-app-momo=y
-
-# 禁用 Clash 体系
-CONFIG_PACKAGE_luci-app-openclash=y
-CONFIG_PACKAGE_clash=y
-
-
-# 🆕 新增插件: 其他科学上网与去广告
-CONFIG_PACKAGE_luci-app-adbyby-plus=y
-
-
-# ===== LuCI 常用管理插件 =====
-CONFIG_PACKAGE_luci-app-autoreboot=y
-CONFIG_PACKAGE_luci-app-ttyd=y
-CONFIG_PACKAGE_luci-app-upnp=y
-
-# 🆕 新增插件: 网络加速与工具
-CONFIG_PACKAGE_luci-app-arpbind=y
-
-# WireGuard VPN 核心组件
-CONFIG_PACKAGE_kmod-wireguard=y
-CONFIG_PACKAGE_wireguard-tools=y
-CONFIG_PACKAGE_luci-app-wireguard=y
-#CONFIG_PACKAGE_luci-proto-wireguard=y
-
-
-
 #
-CONFIG_PACKAGE_etherwake=y
-#CONFIG_PACKAGE_luci-app-wol=y
-#CONFIG_PACKAGE_luci-app-timewol=y
-
-# 🆕 新增插件: 其他服务
-CONFIG_PACKAGE_luci-app-ipsec-server=y
-CONFIG_PACKAGE_luci-app-ipsec-vpnd=y
-#CONFIG_PACKAGE_luci-app-homeassistant=y
-#CONFIG_PACKAGE_luci-app-webdav=y
-#CONFIG_PACKAGE_luci-app-unblockneteasemusic=y
-
-
-# 方案1：传统 DDNS（轻量）
-CONFIG_PACKAGE_ddns-scripts=y
-CONFIG_PACKAGE_ddns-scripts-cloudflare=y
-CONFIG_PACKAGE_ddns-scripts-aliyun=y
-CONFIG_PACKAGE_ddns-scripts-dnspod=y
-CONFIG_PACKAGE_luci-app-ddns=y
-
-# 方案2：DDNS-Go（功能全）
-#CONFIG_PACKAGE_ddns-go=y
-#CONFIG_PACKAGE_luci-app-ddns-go=y
-
-# 方案3：GoDDNS（折中）
-CONFIG_PACKAGE_goddns=y
-CONFIG_PACKAGE_luci-app-goddns=y
-
-
-# ===== Samba4 文件共享 =====
-CONFIG_PACKAGE_samba4-server=y
-CONFIG_PACKAGE_samba4-libs=y
-CONFIG_PACKAGE_samba4-client=y
-CONFIG_PACKAGE_luci-app-samba4=y
-CONFIG_PACKAGE_libicu-full=y
-CONFIG_PACKAGE_attr=y
-CONFIG_PACKAGE_libattr=y
-
-# ===== FTP 服务 =====
-CONFIG_PACKAGE_vsftpd=y
-CONFIG_PACKAGE_luci-app-vsftpd=y
-
-# ===== Adblock 广告过滤 =====
-CONFIG_PACKAGE_adblock-fast=y
-CONFIG_PACKAGE_luci-app-adblock=y
-CONFIG_PACKAGE_iptables-mod-nat-extra=y
-CONFIG_PACKAGE_iptables-mod-filter=y
-CONFIG_PACKAGE_iptables-mod-conntrack-extra=y
-
-# 🆕 新增插件: 应用商店
-#CONFIG_PACKAGE_luci-app-store=y
-
-# 明确不需要的 LuCI 插件
-#CONFIG_PACKAGE_luci-app-filebrowser=y
-#CONFIG_PACKAGE_luci-app-usteer=y
-
-
-
- # ===== 编译与目标参数（发布固件）=====
-# CONFIG_DEVEL is not set
-# CONFIG_CCACHE is not set
-
-CONFIG_TARGET_MULTI_PROFILE=y
-CONFIG_TARGET_PER_DEVICE_ROOTFS=y
-
-
-# ===== 核心内核 / 网络能力 =====
-CONFIG_PACKAGE_kmod-dsa=y
-CONFIG_PACKAGE_kmod-tun=y
-CONFIG_PACKAGE_kmod-wireguard=y
-CONFIG_PACKAGE_kmod-mtd-rw=y
-CONFIG_PACKAGE_kmod-veth=y
-
-# ===== USB 控制器 =====
-CONFIG_PACKAGE_kmod-usb-core=y
-CONFIG_PACKAGE_kmod-usb2=y
-CONFIG_PACKAGE_kmod-usb3=y
-CONFIG_PACKAGE_kmod-usb-dwc3=y
-CONFIG_PACKAGE_kmod-usb-xhci=y
-
-# 明确不用的老控制器
-# CONFIG_PACKAGE_kmod-usb-ohci is not set
-# CONFIG_PACKAGE_kmod-usb-uhci is not set
-
-# ===== USB 网络 =====
-CONFIG_PACKAGE_kmod-usb-net=y
-# 安卓手机 USB 共享
-CONFIG_PACKAGE_kmod-usb-net-rndis=y  
-# 主流 USB 千兆网卡
-CONFIG_PACKAGE_kmod-usb-net-rtl8152=y     
-
-# 明确禁用的 USB 网络驱动
-# CONFIG_PACKAGE_kmod-usb-net-ipheth=y
-# CONFIG_PACKAGE_kmod-usb-net-huawei-cdc-ncm is not set
-# CONFIG_PACKAGE_kmod-usb-net-rtl8150 is not set
-
-# CDC 系列（统一不启用）
-# CONFIG_PACKAGE_kmod-usb-net-cdc-eem is not set
-# CONFIG_PACKAGE_kmod-usb-net-cdc-ether is not set
-# CONFIG_PACKAGE_kmod-usb-net-cdc-mbim is not set
-# CONFIG_PACKAGE_kmod-usb-net-cdc-ncm is not set
-# CONFIG_PACKAGE_kmod-usb-net-cdc-subset is not set
-
-
-# ===== USB 存储 =====
-CONFIG_PACKAGE_kmod-usb-storage=y
-CONFIG_PACKAGE_kmod-usb-storage-extras=y
-CONFIG_PACKAGE_kmod-usb-storage-uas=y
-
-# ===== nftables / 转发 / 加速 =====
-CONFIG_PACKAGE_kmod-nft-core=y
-CONFIG_PACKAGE_kmod-nft-bridge=y
-CONFIG_PACKAGE_kmod-nft-fib=y
-CONFIG_PACKAGE_kmod-nft-fullcone=y
-CONFIG_PACKAGE_kmod-nft-nat=y
-CONFIG_PACKAGE_kmod-nft-netdev=y
-CONFIG_PACKAGE_kmod-nft-offload=y
-CONFIG_PACKAGE_kmod-nft-queue=y
-CONFIG_PACKAGE_kmod-nft-socket=y
-CONFIG_PACKAGE_kmod-nft-tproxy=y
-
-
-# ===== 内核诊断 =====
-CONFIG_PACKAGE_kmod-inet-diag=y
-CONFIG_PACKAGE_kmod-netlink-diag=y
-
-# 明确不需要的模块
-# CONFIG_PACKAGE_kmod-sound-core is not set
-# CONFIG_PACKAGE_kmod-fs-btrfs is not set
-
-
-# ===== 系统组件 =====
-CONFIG_PACKAGE_autocore=y
-CONFIG_PACKAGE_cpufreq=y
-CONFIG_PACKAGE_bash=y
-CONFIG_PACKAGE_htop=y
-CONFIG_PACKAGE_ip-full=y
-CONFIG_PACKAGE_iperf3=y
-CONFIG_PACKAGE_usbutils=y
-
-
-# ===== 块设备工具 =====
-CONFIG_PACKAGE_lsblk=y
-CONFIG_PACKAGE_blkid=y
-CONFIG_PACKAGE_fdisk=y
-CONFIG_PACKAGE_openssh-sftp-server=y
-
-# 明确不启用的分区工具
-# CONFIG_PACKAGE_cfdisk is not set
-# CONFIG_PACKAGE_cgdisk is not set
-# CONFIG_PACKAGE_gdisk is not set
-# CONFIG_PACKAGE_sgdisk is not set
-# CONFIG_PACKAGE_sfdisk is not set
-
-
 # ===== LuCI 基础 =====
+#
+CONFIG_PACKAGE_luci=y
 CONFIG_PACKAGE_luci-base=y
 CONFIG_PACKAGE_luci-compat=y
 CONFIG_PACKAGE_luci-lib-base=y
 CONFIG_PACKAGE_luci-lib-ipkg=y
 CONFIG_PACKAGE_luci-lua-runtime=y
-CONFIG_PACKAGE_luci-proto-bonding=y
-CONFIG_PACKAGE_luci-proto-relay=y
+CONFIG_LUCI_LANG_zh_Hans=y
 
+#
+# ===== 默认主题 =====
+#
+CONFIG_PACKAGE_luci-theme-argon=y
+CONFIG_PACKAGE_luci-app-argon-config=y
 
+#
+# ===== 常用系统工具 =====
+#
+CONFIG_PACKAGE_bash=y
+CONFIG_PACKAGE_htop=y
+CONFIG_PACKAGE_ip-full=y
+CONFIG_PACKAGE_iperf3=y
+CONFIG_PACKAGE_usbutils=y
+CONFIG_PACKAGE_openssh-sftp-server=y
+CONFIG_PACKAGE_lsblk=y
+CONFIG_PACKAGE_blkid=y
+CONFIG_PACKAGE_fdisk=y
 CONFIG_PACKAGE_jq=y
 
-#  luci-app-turboacc  被 flowoffload 替代 
-CONFIG_PACKAGE_luci-app-turboacc=y
 #
-CONFIG_PACKAGE_luci-app-flowoffload=y
-CONFIG_PACKAGE_kmod-nft-flow=y
+# ===== 网络 / VPN（跨平台可用）=====
+#
+CONFIG_PACKAGE_kmod-tun=y
+CONFIG_PACKAGE_kmod-wireguard=y
+CONFIG_PACKAGE_wireguard-tools=y
+CONFIG_PACKAGE_luci-app-wireguard=y
 
+#
+# ===== IPsec（用户态，平台无关）=====
+#
+CONFIG_PACKAGE_luci-app-ipsec-server=y
+CONFIG_PACKAGE_luci-app-ipsec-vpnd=y
 
+#
+# ===== DDNS =====
+#
+CONFIG_PACKAGE_ddns-scripts=y
+CONFIG_PACKAGE_luci-app-ddns=y
+CONFIG_PACKAGE_ddns-scripts-cloudflare=y
+CONFIG_PACKAGE_ddns-scripts-aliyun=y
+CONFIG_PACKAGE_ddns-scripts-dnspod=y
+
+#
+# ===== 文件 / 服务 =====
+#
+CONFIG_PACKAGE_samba4-server=y
+CONFIG_PACKAGE_samba4-libs=y
+CONFIG_PACKAGE_samba4-client=y
+CONFIG_PACKAGE_luci-app-samba4=y
+CONFIG_PACKAGE_vsftpd=y
+CONFIG_PACKAGE_luci-app-vsftpd=y
+
+#
+# ===== 广告过滤 =====
+#
+CONFIG_PACKAGE_luci-app-adblock=y
+CONFIG_PACKAGE_adblock-fast=y
+
+#
+# ===== 明确禁用（防止被 feeds 拉进来）=====
+#
+CONFIG_PACKAGE_luci-app-turboacc=n
 CONFIG_PACKAGE_onionshare-cli=n
-
-
-
-
-
+CONFIG_PACKAGE_luci-app-advanced-reboot=n
