@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# === 清理已知问题包（feeds 自带，但本项目禁用）===
+rm -rf ../feeds/packages/onionshare*
+
 #安装和更新软件包
 UPDATE_PACKAGE() {
 	local PKG_NAME=$1
@@ -100,6 +103,7 @@ UPDATE_VERSION() {
 
 #UPDATE_VERSION "软件包名" "测试版，true，可选，默认为否"
 UPDATE_VERSION "sing-box"
+
 
 
 
