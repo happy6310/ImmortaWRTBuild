@@ -130,6 +130,9 @@ UPDATE_PACKAGE "luci-app-webdav" \
 UPDATE_PACKAGE "quickfile" "sbwml/luci-app-quickfile" "main"
 
 
+UPDATE_PACKAGE "luck-app-wireguard-dashboard" "gkerma/luci-app-wireguard-dashboard" "main"
+
+
 echo "All custom packages updated successfully."
 
 
@@ -180,6 +183,7 @@ UPDATE_VERSION() {
 
 #UPDATE_VERSION "软件包名" "测试版，true，可选，默认为否"
 #UPDATE_VERSION "sing-box"
+
 
 
 
