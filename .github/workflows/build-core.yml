@@ -150,6 +150,17 @@ jobs:
           ./scripts/feeds update -a
           ./scripts/feeds install -a
 
+      - name: Prune Base Feeds
+        run: |
+          cd wrt
+          rm -rf package/feeds/packages/gnunet*
+          rm -rf package/feeds/packages/dockerd
+          rm -rf package/feeds/packages/jool
+          rm -rf package/feeds/packages/openvswitch
+          rm -rf package/feeds/packages/onionshare*
+          rm -rf package/feeds/luci/luci-app-advanced-reboot
+
+    
       - name: Custom Packages
         run: |
           cd ./wrt/package/
