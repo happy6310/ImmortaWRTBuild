@@ -6,32 +6,19 @@ CONFIG_PACKAGE_luci-base=y
 CONFIG_PACKAGE_luci-compat=y
 CONFIG_PACKAGE_luci-lib-base=y
 CONFIG_PACKAGE_luci-lua-runtime=y
-CONFIG_LUCI_LANG_zh_Hans=y
-
 
 CONFIG_PACKAGE_luci-app-autoreboot=y
 CONFIG_PACKAGE_luci-app-ttyd=y
 CONFIG_PACKAGE_luci-app-upnp=y
+CONFIG_LUCI_LANG_zh_Hans=y
+
+
 
 #
 # ===== 默认主题 =====
 #
 CONFIG_PACKAGE_luci-theme-argon=y
 CONFIG_PACKAGE_luci-app-argon-config=y
-
-#
-# ===== 常用系统工具 =====
-#
-CONFIG_PACKAGE_bash=y
-CONFIG_PACKAGE_htop=y
-CONFIG_PACKAGE_ip-full=y
-CONFIG_PACKAGE_iperf3=y
-CONFIG_PACKAGE_usbutils=y
-CONFIG_PACKAGE_openssh-sftp-server=y
-CONFIG_PACKAGE_lsblk=y
-CONFIG_PACKAGE_blkid=y
-CONFIG_PACKAGE_fdisk=y
-CONFIG_PACKAGE_jq=y
 
 
 #
@@ -48,22 +35,6 @@ CONFIG_PACKAGE_luci-app-openclash=y
 CONFIG_PACKAGE_clash=y
 
 
-
-
-
-#额外插件
-
-
-
-CONFIG_PACKAGE_luci-app-quickstart=y
-CONFIG_PACKAGE_luci-app-unblockneteasemusic=y
-CONFIG_PACKAGE_luci-app-webdav=y
-
-
-
-
-
-
 #
 # ===== DDNS =====
 #
@@ -72,11 +43,9 @@ CONFIG_PACKAGE_ddns-scripts=y
 CONFIG_PACKAGE_ddns-scripts-cloudflare=y
 CONFIG_PACKAGE_ddns-scripts-aliyun=y
 CONFIG_PACKAGE_ddns-scripts-dnspod=y
-
 #
 # ===== 文件 / 服务 =====
 #
-
 CONFIG_PACKAGE_luci-app-samba4=y
 
 CONFIG_PACKAGE_vsftpd=y
@@ -89,27 +58,37 @@ CONFIG_PACKAGE_luci-app-adblock=y
 CONFIG_PACKAGE_adblock-fast=y
 
 
-CONFIG_PACKAGE_luci-app-arpbind=y
+#
+# ===== 常用系统工具 =====
+#
+
+CONFIG_PACKAGE_bash=y
+CONFIG_PACKAGE_htop=y
+CONFIG_PACKAGE_ip-full=y
+CONFIG_PACKAGE_iperf3=y
+CONFIG_PACKAGE_openssh-sftp-server=y
+CONFIG_PACKAGE_jq=y
+
+# 可选
+# CONFIG_PACKAGE_usbutils=y
+# CONFIG_PACKAGE_lsblk=y
+# CONFIG_PACKAGE_blkid=y
+# CONFIG_PACKAGE_fdisk=y
+
+#额外插件
 
 CONFIG_PACKAGE_luci-app-turboacc=y
-
+CONFIG_PACKAGE_luci-app-quickstart=y
+CONFIG_PACKAGE_luci-app-unblockneteasemusic=y
+CONFIG_PACKAGE_luci-app-webdav=y  
+CONFIG_PACKAGE_luci-app-arpbind=y
 
 #
 # ===== 明确禁用（防止被 feeds 拉进来）=====
 #
 
-CONFIG_PACKAGE_onionshare-cli=n
-CONFIG_PACKAGE_luci-app-advanced-reboot=n
-
-
-#CONFIG_PACKAGE_luci-app-dockerman=y
-#CONFIG_PACKAGE_luci-app-store=y
-#CONFIG_PACKAGE_luci-app-istorex=y
-#CONFIG_PACKAGE_luci-app-homeassistant=y
-
-
-
-#CONFIG_PACKAGE_luci-lib-ipkg=y
-
-
+# CONFIG_PACKAGE_luci-app-dockerman=n
+# CONFIG_PACKAGE_luci-app-store=n
+# CONFIG_PACKAGE_luci-app-istorex=n
+# CONFIG_PACKAGE_luci-app-homeassistant=n
 
