@@ -142,6 +142,11 @@ UPDATE_PACKAGE "luci-app-webdav" \
 	"main" \
 	"pkg"
 
+UPDATE_PACKAGE "luci-app-quickstart" \
+	"kenzok8/small-package" \
+	"main" \
+	"pkg"
+
 
 
 echo "All custom packages updated successfully."
