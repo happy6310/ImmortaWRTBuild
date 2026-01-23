@@ -25,25 +25,24 @@ UPDATE_PACKAGE() {
 
 	echo " "
 
+
 	# === 1. 删除已有目录 ===
 	for NAME in "${PKG_LIST[@]}"; do
-		[ -z "$NAME" ] && continue
-		echo "Search directory: $NAME"
-		#local FOUND_DIRS=$(find ../feeds/luci/ ../feeds/packages/ -maxdepth 3 -type d -iname "*$NAME*" 2>/dev/null)
-		local FOUND_DIRS=$(find ../feeds/luci/ ../feeds/packages/ -maxdepth 3 -type d ( -name "$NAME" -o -name "$NAME.git" 2>/dev/null)
-
-
-
-	
-		if [ -n "$FOUND_DIRS" ]; then
-			while read -r DIR; do
-				rm -rf "$DIR"
-				echo "Delete directory: $DIR"
-			done <<< "$FOUND_DIRS"
-		else
-			echo "Not found directory: $NAME"
-		fi
+	    [ -z "$NAME" ] && continue
+	    echo "Search directory: $NAME"
+	    local FOUND_DIRS
+	    FOUND_DIRS=$(find ../feeds/luci/ ../feeds/packages/ -maxdepth 3 -type d \( -name "$NAME" -o -name "$NAME.git" \) 2>/dev/null)
+	    if [ -n "$FOUND_DIRS" ]; then
+	        while read -r DIR; do
+	            rm -rf "$DIR"
+	            echo "Deleted: $DIR"
+	        done <<< "$FOUND_DIRS"
+	    else
+	        echo "Not found: $NAME"
+	    fi
 	done
+
+
 
 	# === 2. 克隆仓库 ===
 	rm -rf "$REPO_NAME"
@@ -199,6 +198,7 @@ UPDATE_VERSION() {
 
 #UPDATE_VERSION "软件包名" "测试版，true，可选，默认为否"
 #UPDATE_VERSION "sing-box"
+
 
 
 
