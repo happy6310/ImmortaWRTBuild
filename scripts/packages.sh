@@ -1,5 +1,14 @@
 #!/bin/bash
 
+
+# === 确保 jq/host 存在 ===
+if [ ! -x "./staging_dir/host/bin/jq" ]; then
+    echo "Host jq not found, installing jq (host)..."
+    ./scripts/feeds update packages
+    ./scripts/feeds install jq
+fi
+
+
 # === 清理已知问题包（feeds 自带，但本项目禁用）===
 rm -rf ../feeds/packages/onionshare*
 
@@ -20,8 +29,12 @@ UPDATE_PACKAGE() {
 	for NAME in "${PKG_LIST[@]}"; do
 		[ -z "$NAME" ] && continue
 		echo "Search directory: $NAME"
-		local FOUND_DIRS=$(find ../feeds/luci/ ../feeds/packages/ -maxdepth 3 -type d -iname "*$NAME*" 2>/dev/null)
+		#local FOUND_DIRS=$(find ../feeds/luci/ ../feeds/packages/ -maxdepth 3 -type d -iname "*$NAME*" 2>/dev/null)
+		local FOUND_DIRS=$(find ../feeds/luci/ ../feeds/packages/ -maxdepth 3 -type d ( -name "$NAME" -o -name "$NAME.git" 2>/dev/null)
 
+
+
+	
 		if [ -n "$FOUND_DIRS" ]; then
 			while read -r DIR; do
 				rm -rf "$DIR"
@@ -58,9 +71,11 @@ UPDATE_PACKAGE() {
 		name)
 			# 仓库名 != 包名
 			# mv -f "$REPO_NAME" "$PKG_NAME"
-			if [[ "$REPO_NAME" != "$PKG_NAME" ]]; then
-			    mv -f "$REPO_NAME" "$PKG_NAME"
-			fi				
+		    if [ "$REPO_NAME" != "$PKG_NAME" ] && [ ! -d "$PKG_NAME" ]; then
+		        mv "$REPO_NAME" "$PKG_NAME"
+		    else
+		        echo "Skip rename: $REPO_NAME"
+		    fi			
 			;;
 
 		*)
@@ -183,6 +198,7 @@ UPDATE_VERSION() {
 
 #UPDATE_VERSION "软件包名" "测试版，true，可选，默认为否"
 #UPDATE_VERSION "sing-box"
+
 
 
 
