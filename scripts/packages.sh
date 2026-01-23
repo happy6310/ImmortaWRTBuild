@@ -7,21 +7,20 @@ rm -rf ../feeds/packages/onionshare*
 # 安装和更新软件包
 # =========================
 UPDATE_PACKAGE() {
-	local PKG_NAME=$1          # 最终插件目录名
-	local PKG_REPO=$2          # GitHub 仓库 user/repo
-	local PKG_BRANCH=$3        # 分支
-	local PKG_SPECIAL=$4       # pkg / name / subdir
-	local PKG_SUBDIR=$5        # subdir 模式下：实际插件路径
-	local PKG_LIST=($6)        # 需要清理的历史名称
+	local PKG_NAME=$1
+	local PKG_REPO=$2
+	local PKG_BRANCH=$3
+	local PKG_SPECIAL=$4          # pkg / name / 空
+	local PKG_LIST=("$PKG_NAME" $5)  # 第5个参数为自定义名称列表
 	local REPO_NAME=${PKG_REPO#*/}
 
 	echo " "
 
-	# === 1. 删除 feeds 中已有的同名/旧名插件 ===
-	for NAME in "${PKG_LIST[@]}" "$PKG_NAME"; do
+	# === 1. 删除已有目录 ===
+	for NAME in "${PKG_LIST[@]}"; do
+		[ -z "$NAME" ] && continue
 		echo "Search directory: $NAME"
-		local FOUND_DIRS
-		FOUND_DIRS=$(find ../feeds/luci/ ../feeds/packages/ -maxdepth 3 -type d -iname "*$NAME*" 2>/dev/null)
+		local FOUND_DIRS=$(find ../feeds/luci/ ../feeds/packages/ -maxdepth 3 -type d -iname "*$NAME*" 2>/dev/null)
 
 		if [ -n "$FOUND_DIRS" ]; then
 			while read -r DIR; do
@@ -35,13 +34,24 @@ UPDATE_PACKAGE() {
 
 	# === 2. 克隆仓库 ===
 	rm -rf "$REPO_NAME"
-	git clone --depth=1 --single-branch --branch "$PKG_BRANCH" "https://github.com/$PKG_REPO.git"
+	git clone --depth=1 --single-branch --branch "$PKG_BRANCH" \
+		"https://github.com/$PKG_REPO.git"
 
 	# === 3. 按模式处理 ===
 	case "$PKG_SPECIAL" in
 		pkg)
 			# 大杂烩仓库，提取匹配目录
-			find "./$REPO_NAME" -maxdepth 4 -type d -name "$PKG_NAME" -exec cp -rf {} ./ \;
+			local FOUND_PKG_DIRS
+			FOUND_PKG_DIRS=$(find "./$REPO_NAME" -maxdepth 4 -type d -iname "$PKG_NAME" 2>/dev/null)
+			if [ -z "$FOUND_PKG_DIRS" ]; then
+				echo "ERROR: pkg $PKG_NAME not found in $PKG_REPO"
+				rm -rf "./$REPO_NAME"
+				exit 1
+			fi
+			while read -r DIR; do
+				cp -rf "$DIR" ./
+				echo "Copied $DIR to ./"
+			done <<< "$FOUND_PKG_DIRS"
 			rm -rf "./$REPO_NAME"
 			;;
 
@@ -50,18 +60,8 @@ UPDATE_PACKAGE() {
 			mv -f "$REPO_NAME" "$PKG_NAME"
 			;;
 
-		subdir)
-			# 仓库中只有子目录是插件（例如 turboacc）
-			if [ ! -d "$REPO_NAME/$PKG_SUBDIR" ]; then
-				echo "ERROR: subdir $PKG_SUBDIR not found in $PKG_REPO"
-				exit 1
-			fi
-			cp -rf "$REPO_NAME/$PKG_SUBDIR" "./$PKG_NAME"
-			rm -rf "./$REPO_NAME"
-			;;
-
 		*)
-			# 默认：整个仓库就是插件
+			# 默认整个仓库就是插件
 			mv -f "$REPO_NAME" "$PKG_NAME"
 			;;
 	esac
