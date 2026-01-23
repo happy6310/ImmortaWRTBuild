@@ -79,19 +79,12 @@ UPDATE_PACKAGE() {
 # =========================
 # 主题
 # =========================
-UPDATE_PACKAGE "argon" \
-	"chingjyu/luci-theme-argon" \
-	"main"
-
-UPDATE_PACKAGE "luci-app-argon-config" \
-	"jerrykuku/luci-app-argon-config" \
-	"master"
 
 	
 
 
-#UPDATE_PACKAGE "argon" "chingjyu/luci-theme-argon" "main"
-#UPDATE_PACKAGE "luci-app-argon-config" "jerrykuku/luci-app-argon-config" "master"
+UPDATE_PACKAGE "argon" "chingjyu/luci-theme-argon" "main"
+UPDATE_PACKAGE "luci-app-argon-config" "jerrykuku/luci-app-argon-config" "master"
 
 
 
@@ -114,10 +107,11 @@ UPDATE_PACKAGE "luci-app-ipsec-server" "Ivaneus/luci-app-ipsec-server" "main" ""
 # └── luci/
 #     └── luci-app-turboacc/
 # =========================
-UPDATE_PACKAGE "luci-app-turboacc" \
-	"chenmozhijin/turboacc" \
-	"luci" \
-	"pkg" 
+ 
+UPDATE_PACKAGE "luci-app-turboacc" "chenmozhijin/turboacc" "luci" "pkg"
+
+
+
 	
 # =========================
 # kenzok8 small-package
@@ -127,56 +121,10 @@ UPDATE_PACKAGE "luci-app-webdav" \
 	"main" \
 	"pkg"
 
+UPDATE_PACKAGE "quickfile" "sbwml/luci-app-quickfile" "main"
 
-UPDATE_PACKAGE "luci-app-unblockneteasemusic" \
-	"kenzok8/small-package" \
-	"main" \
-	"pkg"
-
-# =========================
-# VIKINGYFY packages
-# =========================
-UPDATE_PACKAGE "luci-app-timewol" \
-	"VIKINGYFY/packages" \
-	"main" \
-	"pkg"
-
-UPDATE_PACKAGE "luci-app-wolplus" \
-	"VIKINGYFY/packages" \
-	"main" \
-	"pkg"
 
 echo "All custom packages updated successfully."
-
-
-
-
-
-
-#UPDATE_PACKAGE "momo" "nikkinikki-org/OpenWrt-momo" "main"
-#UPDATE_PACKAGE "nikki" "nikkinikki-org/OpenWrt-nikki" "main"
-#UPDATE_PACKAGE "openclash" "vernesong/OpenClash" "dev" "pkg"
-#UPDATE_PACKAGE "qmodem" "FUjr/QModem" "main"
-
-
-# homeassistant 目前有问题，opkg编译不过
-#UPDATE_PACKAGE "luci-app-homeassistant" "kenzok8/small-package" "main" "pkg"
-
-#UPDATE_PACKAGE "ddns-go" "sirpdboy/luci-app-ddns-go" "main"
-#UPDATE_PACKAGE "diskman" "lisaac/luci-app-diskman" "master"
-#UPDATE_PACKAGE "easytier" "EasyTier/luci-app-easytier" "main"
-#UPDATE_PACKAGE "fancontrol" "rockjake/luci-app-fancontrol" "main"
-#UPDATE_PACKAGE "gecoosac" "lwb1978/openwrt-gecoosac" "main"
-#UPDATE_PACKAGE "mosdns" "sbwml/luci-app-mosdns" "v5" "" "v2dat"
-#UPDATE_PACKAGE "netspeedtest" "sirpdboy/luci-app-netspeedtest" "master" "" "homebox speedtest"
-#UPDATE_PACKAGE "openlist2" "sbwml/luci-app-openlist2" "main"
-#UPDATE_PACKAGE "partexp" "sirpdboy/luci-app-partexp" "main"
-#UPDATE_PACKAGE "qbittorrent" "sbwml/luci-app-qbittorrent" "master" "" "qt6base qt6tools rblibtorrent"
-#UPDATE_PACKAGE "qmodem" "FUjr/QModem" "main"
-#UPDATE_PACKAGE "quickfile" "sbwml/luci-app-quickfile" "main"
-#UPDATE_PACKAGE "vnt" "lmq8267/luci-app-vnt" "main"
-
-#UPDATE_PACKAGE "luci-app-turboacc" "chenmozhijin/turboacc" "luci" "pkg"
 
 
 
@@ -226,6 +174,7 @@ UPDATE_VERSION() {
 
 #UPDATE_VERSION "软件包名" "测试版，true，可选，默认为否"
 #UPDATE_VERSION "sing-box"
+
 
 
 
