@@ -48,6 +48,9 @@ CONFIG_PACKAGE_luci-app-store=y
 CONFIG_PACKAGE_luci-app-istorex=y
 CONFIG_PACKAGE_luci-app-quickstart=y
 CONFIG_PACKAGE_luci-app-wireguard=y
+CONFIG_PACKAGE_unblockneteasemusic=y
+CONFIG_PACKAGE_luci-app-webdav=y
+CONFIG_PACKAGE_luci-app-homeassistant=y
 
 
 
@@ -91,12 +94,16 @@ CONFIG_PACKAGE_luci-app-openclash=y
 CONFIG_PACKAGE_clash=y
 
 
+
+
+
 #
 # ===== 明确禁用（防止被 feeds 拉进来）=====
 #
 CONFIG_PACKAGE_luci-app-turboacc=n
 CONFIG_PACKAGE_onionshare-cli=n
 CONFIG_PACKAGE_luci-app-advanced-reboot=n
+
 
 
 
