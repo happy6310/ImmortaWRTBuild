@@ -57,12 +57,18 @@ UPDATE_PACKAGE() {
 
 		name)
 			# 仓库名 != 包名
-			mv -f "$REPO_NAME" "$PKG_NAME"
+			# mv -f "$REPO_NAME" "$PKG_NAME"
+			if [[ "$REPO_NAME" != "$PKG_NAME" ]]; then
+			    mv -f "$REPO_NAME" "$PKG_NAME"
+			fi				
 			;;
 
 		*)
 			# 默认整个仓库就是插件
-			mv -f "$REPO_NAME" "$PKG_NAME"
+			# mv -f "$REPO_NAME" "$PKG_NAME"
+			if [[ "$REPO_NAME" != "$PKG_NAME" ]]; then
+			    mv -f "$REPO_NAME" "$PKG_NAME"
+			fi			
 			;;
 	esac
 }
@@ -83,7 +89,7 @@ UPDATE_PACKAGE() {
 	
 
 
-UPDATE_PACKAGE "argon" "chingjyu/luci-theme-argon" "main" "name"
+UPDATE_PACKAGE "argon" "chingjyu/luci-theme-argon" "main"
 UPDATE_PACKAGE "luci-app-argon-config" "jerrykuku/luci-app-argon-config" "master"
 
 
@@ -174,6 +180,7 @@ UPDATE_VERSION() {
 
 #UPDATE_VERSION "软件包名" "测试版，true，可选，默认为否"
 #UPDATE_VERSION "sing-box"
+
 
 
 
