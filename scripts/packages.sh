@@ -3,51 +3,147 @@
 # === 清理已知问题包（feeds 自带，但本项目禁用）===
 rm -rf ../feeds/packages/onionshare*
 
-#安装和更新软件包
+# =========================
+# 安装和更新软件包
+# =========================
 UPDATE_PACKAGE() {
-	local PKG_NAME=$1
-	local PKG_REPO=$2
-	local PKG_BRANCH=$3
-	local PKG_SPECIAL=$4
-	local PKG_LIST=("$PKG_NAME" $5)  # 第5个参数为自定义名称列表
+	local PKG_NAME=$1          # 最终插件目录名
+	local PKG_REPO=$2          # GitHub 仓库 user/repo
+	local PKG_BRANCH=$3        # 分支
+	local PKG_SPECIAL=$4       # pkg / name / subdir
+	local PKG_SUBDIR=$5        # subdir 模式下：实际插件路径
+	local PKG_LIST=($6)        # 需要清理的历史名称
 	local REPO_NAME=${PKG_REPO#*/}
 
 	echo " "
 
-	# 删除本地可能存在的不同名称的软件包
-	for NAME in "${PKG_LIST[@]}"; do
-		# 查找匹配的目录
+	# === 1. 删除 feeds 中已有的同名/旧名插件 ===
+	for NAME in "${PKG_LIST[@]}" "$PKG_NAME"; do
 		echo "Search directory: $NAME"
-		local FOUND_DIRS=$(find ../feeds/luci/ ../feeds/packages/ -maxdepth 3 -type d -iname "*$NAME*" 2>/dev/null)
+		local FOUND_DIRS
+		FOUND_DIRS=$(find ../feeds/luci/ ../feeds/packages/ -maxdepth 3 -type d -iname "*$NAME*" 2>/dev/null)
 
-		# 删除找到的目录
 		if [ -n "$FOUND_DIRS" ]; then
 			while read -r DIR; do
 				rm -rf "$DIR"
 				echo "Delete directory: $DIR"
 			done <<< "$FOUND_DIRS"
 		else
-			echo "Not fonud directory: $NAME"
+			echo "Not found directory: $NAME"
 		fi
 	done
 
-	# 克隆 GitHub 仓库
-	git clone --depth=1 --single-branch --branch $PKG_BRANCH "https://github.com/$PKG_REPO.git"
+	# === 2. 克隆仓库 ===
+	rm -rf "$REPO_NAME"
+	git clone --depth=1 --single-branch --branch "$PKG_BRANCH" "https://github.com/$PKG_REPO.git"
 
-	# 处理克隆的仓库
-	if [[ $PKG_SPECIAL == "pkg" ]]; then
-		find ./$REPO_NAME/*/ -maxdepth 3 -type d -iname "*$PKG_NAME*" -prune -exec cp -rf {} ./ \;
-		rm -rf ./$REPO_NAME/
-	elif [[ $PKG_SPECIAL == "name" ]]; then
-		mv -f $REPO_NAME $PKG_NAME
-	fi
+	# === 3. 按模式处理 ===
+	case "$PKG_SPECIAL" in
+		pkg)
+			# 大杂烩仓库，提取匹配目录
+			find "./$REPO_NAME" -maxdepth 4 -type d -name "$PKG_NAME" -exec cp -rf {} ./ \;
+			rm -rf "./$REPO_NAME"
+			;;
+
+		name)
+			# 仓库名 != 包名
+			mv -f "$REPO_NAME" "$PKG_NAME"
+			;;
+
+		subdir)
+			# 仓库中只有子目录是插件（例如 turboacc）
+			if [ ! -d "$REPO_NAME/$PKG_SUBDIR" ]; then
+				echo "ERROR: subdir $PKG_SUBDIR not found in $PKG_REPO"
+				exit 1
+			fi
+			cp -rf "$REPO_NAME/$PKG_SUBDIR" "./$PKG_NAME"
+			rm -rf "./$REPO_NAME"
+			;;
+
+		*)
+			# 默认：整个仓库就是插件
+			mv -f "$REPO_NAME" "$PKG_NAME"
+			;;
+	esac
 }
+
 
 # 调用示例
 # UPDATE_PACKAGE "OpenAppFilter" "destan19/OpenAppFilter" "master" "" "custom_name1 custom_name2"
 # UPDATE_PACKAGE "open-app-filter" "destan19/OpenAppFilter" "master" "" "luci-app-appfilter oaf" 这样会把原有的open-app-filter，luci-app-appfilter，oaf相关组件删除，不会出现coremark错误。
 
 # UPDATE_PACKAGE "包名" "项目地址" "项目分支" "pkg/name，可选，pkg为从大杂烩中单独提取包名插件；name为重命名为包名"
+
+
+
+# =========================
+# 主题
+# =========================
+UPDATE_PACKAGE "argon" \
+	"chingjyu/luci-theme-argon" \
+	"main"
+
+UPDATE_PACKAGE "luci-app-argon-config" \
+	"jerrykuku/luci-app-argon-config" \
+	"master"
+
+# =========================
+# 常用插件
+# =========================
+UPDATE_PACKAGE "helloworld" \
+	"fw876/helloworld" \
+	"master"
+
+# =========================
+# IPsec Server（官方仓库，根目录就是插件）
+# =========================
+UPDATE_PACKAGE "luci-app-ipsec-server" \
+	"Ivaneus/luci-app-ipsec-server" \
+	"main"
+
+# =========================
+# TurboACC（重点修复项）
+# 仓库结构：
+# turboacc/
+# └── luci/
+#     └── luci-app-turboacc/
+# =========================
+UPDATE_PACKAGE "luci-app-turboacc" \
+	"chenmozhijin/turboacc" \
+	"luci" \
+	"subdir" \
+	"luci/luci-app-turboacc"
+
+# =========================
+# kenzok8 small-package
+# =========================
+UPDATE_PACKAGE "luci-app-webdav" \
+	"kenzok8/small-package" \
+	"main" \
+	"pkg"
+
+UPDATE_PACKAGE "luci-app-unblockneteasemusic" \
+	"kenzok8/small-package" \
+	"main" \
+	"pkg"
+
+# =========================
+# VIKINGYFY packages
+# =========================
+UPDATE_PACKAGE "luci-app-timewol" \
+	"VIKINGYFY/packages" \
+	"main" \
+	"pkg"
+
+UPDATE_PACKAGE "luci-app-wolplus" \
+	"VIKINGYFY/packages" \
+	"main" \
+	"pkg"
+
+echo "All custom packages updated successfully."
+
+
+
 
 ##### 主题
 #UPDATE_PACKAGE "argon" "sbwml/luci-theme-argon" "openwrt-25.12"
@@ -60,8 +156,7 @@ UPDATE_PACKAGE "luci-app-argon-config" "jerrykuku/luci-app-argon-config" "master
 #UPDATE_PACKAGE "kucat" "sirpdboy/luci-theme-kucat" "master"
 #UPDATE_PACKAGE "kucat-config" "sirpdboy/luci-app-kucat-config" "master"
 
-
-UPDATE_PACKAGE "helloworld" "fw876/helloworld" "master"
+UPDATE_PACKAGE "luci-app-ssr-plus" "fw876/helloworld" "master" "pkg"
 
 UPDATE_PACKAGE "luci-app-ipsec-server" "Ivaneus/luci-app-ipsec-server" "main" "" "luci-app-ipsec-server"
 
@@ -75,10 +170,6 @@ UPDATE_PACKAGE "luci-app-wolplus" "VIKINGYFY/packages"  "main" "pkg"
 #UPDATE_PACKAGE "nikki" "nikkinikki-org/OpenWrt-nikki" "main"
 #UPDATE_PACKAGE "openclash" "vernesong/OpenClash" "dev" "pkg"
 #UPDATE_PACKAGE "qmodem" "FUjr/QModem" "main"
-#UPDATE_PACKAGE "luci-app-openclash" "kenzok8/small-package" "main" "pkg"
-#UPDATE_PACKAGE "mihomo" "kenzok8/small-package" "main" "pkg"
-#UPDATE_PACKAGE "luci-app-ipsec-server" "kenzok8/small-package" "main" "pkg"
-#UPDATE_PACKAGE "luci-app-store" "kenzok8/small-package" "main" "pkg"
 
 
 # homeassistant 目前有问题，opkg编译不过
@@ -148,6 +239,7 @@ UPDATE_VERSION() {
 
 #UPDATE_VERSION "软件包名" "测试版，true，可选，默认为否"
 #UPDATE_VERSION "sing-box"
+
 
 
 
