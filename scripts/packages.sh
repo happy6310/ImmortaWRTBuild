@@ -87,19 +87,25 @@ UPDATE_PACKAGE "luci-app-argon-config" \
 	"jerrykuku/luci-app-argon-config" \
 	"master"
 
+	
+
+
+#UPDATE_PACKAGE "argon" "chingjyu/luci-theme-argon" "main"
+#UPDATE_PACKAGE "luci-app-argon-config" "jerrykuku/luci-app-argon-config" "master"
+
+
+
 # =========================
 # 常用插件
 # =========================
-UPDATE_PACKAGE "helloworld" \
-	"fw876/helloworld" \
-	"master"
+UPDATE_PACKAGE "luci-app-ssr-plus" "fw876/helloworld" "master" "pkg"
+
 
 # =========================
 # IPsec Server（官方仓库，根目录就是插件）
 # =========================
-UPDATE_PACKAGE "luci-app-ipsec-server" \
-	"Ivaneus/luci-app-ipsec-server" \
-	"main"
+
+UPDATE_PACKAGE "luci-app-ipsec-server" "Ivaneus/luci-app-ipsec-server" "main" "" "luci-app-ipsec-server"
 
 # =========================
 # TurboACC（重点修复项）
@@ -111,9 +117,8 @@ UPDATE_PACKAGE "luci-app-ipsec-server" \
 UPDATE_PACKAGE "luci-app-turboacc" \
 	"chenmozhijin/turboacc" \
 	"luci" \
-	"subdir" \
-	"luci/luci-app-turboacc"
-
+	"pkg" 
+	
 # =========================
 # kenzok8 small-package
 # =========================
@@ -121,6 +126,7 @@ UPDATE_PACKAGE "luci-app-webdav" \
 	"kenzok8/small-package" \
 	"main" \
 	"pkg"
+
 
 UPDATE_PACKAGE "luci-app-unblockneteasemusic" \
 	"kenzok8/small-package" \
@@ -145,26 +151,7 @@ echo "All custom packages updated successfully."
 
 
 
-##### 主题
-#UPDATE_PACKAGE "argon" "sbwml/luci-theme-argon" "openwrt-25.12"
 
-UPDATE_PACKAGE "argon" "chingjyu/luci-theme-argon" "main"
-UPDATE_PACKAGE "luci-app-argon-config" "jerrykuku/luci-app-argon-config" "master"
-
-#UPDATE_PACKAGE "aurora" "eamonxg/luci-theme-aurora" "master"
-#UPDATE_PACKAGE "aurora-config" "eamonxg/luci-app-aurora-config" "master"
-#UPDATE_PACKAGE "kucat" "sirpdboy/luci-theme-kucat" "master"
-#UPDATE_PACKAGE "kucat-config" "sirpdboy/luci-app-kucat-config" "master"
-
-UPDATE_PACKAGE "luci-app-ssr-plus" "fw876/helloworld" "master" "pkg"
-
-UPDATE_PACKAGE "luci-app-ipsec-server" "Ivaneus/luci-app-ipsec-server" "main" "" "luci-app-ipsec-server"
-
-UPDATE_PACKAGE "luci-app-webdav" "kenzok8/small-package" "main" "pkg"
-UPDATE_PACKAGE "luci-app-unblockneteasemusic" "kenzok8/small-package" "main" "pkg"
-
-UPDATE_PACKAGE "luci-app-timewol" "VIKINGYFY/packages"  "main" "pkg"
-UPDATE_PACKAGE "luci-app-wolplus" "VIKINGYFY/packages"  "main" "pkg"
 
 #UPDATE_PACKAGE "momo" "nikkinikki-org/OpenWrt-momo" "main"
 #UPDATE_PACKAGE "nikki" "nikkinikki-org/OpenWrt-nikki" "main"
@@ -239,6 +226,7 @@ UPDATE_VERSION() {
 
 #UPDATE_VERSION "软件包名" "测试版，true，可选，默认为否"
 #UPDATE_VERSION "sing-box"
+
 
 
 
