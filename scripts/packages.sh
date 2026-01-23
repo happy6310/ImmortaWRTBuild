@@ -83,7 +83,7 @@ UPDATE_PACKAGE() {
 	
 
 
-UPDATE_PACKAGE "argon" "chingjyu/luci-theme-argon" "main"
+UPDATE_PACKAGE "argon" "chingjyu/luci-theme-argon" "main" "name"
 UPDATE_PACKAGE "luci-app-argon-config" "jerrykuku/luci-app-argon-config" "master"
 
 
@@ -174,6 +174,7 @@ UPDATE_VERSION() {
 
 #UPDATE_VERSION "软件包名" "测试版，true，可选，默认为否"
 #UPDATE_VERSION "sing-box"
+
 
 
 
