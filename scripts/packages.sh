@@ -60,10 +60,11 @@ UPDATE_PACKAGE "luci-app-turboacc" "chenmozhijin/turboacc" "luci" "pkg"
 #UPDATE_PACKAGE "mihomo" "kenzok8/small-package" "main" "pkg"
 #UPDATE_PACKAGE "luci-app-ipsec-server" "kenzok8/small-package" "main" "pkg"
 #UPDATE_PACKAGE "luci-app-store" "kenzok8/small-package" "main" "pkg"
-
-UPDATE_PACKAGE "luci-app-homeassistant" "kenzok8/small-package" "main" "pkg"
 UPDATE_PACKAGE "luci-app-webdav" "kenzok8/small-package" "main" "pkg"
 UPDATE_PACKAGE "luci-app-unblockneteasemusic" "kenzok8/small-package" "main" "pkg"
+
+# homeassistant 目前有问题，opkg编译不过
+#UPDATE_PACKAGE "luci-app-homeassistant" "kenzok8/small-package" "main" "pkg"
 
 
 
@@ -112,6 +113,7 @@ UPDATE_VERSION() {
 
 #UPDATE_VERSION "软件包名" "测试版，true，可选，默认为否"
 UPDATE_VERSION "sing-box"
+
 
 
 
