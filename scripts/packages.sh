@@ -98,7 +98,7 @@ UPDATE_PACKAGE "luci-app-argon-config" "jerrykuku/luci-app-argon-config" "master
 # IPsec Server（官方仓库，根目录就是插件）
 # =========================
 
-UPDATE_PACKAGE "luci-app-ipsec-server" "Ivaneus/luci-app-ipsec-server" "main" "" "luci-app-ipsec-server"
+UPDATE_PACKAGE "luci-app-ipsec-server" "Ivaneus/luci-app-ipsec-server" "main" "name" 
 
 # =========================
 # TurboACC（重点修复项）
@@ -174,6 +174,7 @@ UPDATE_VERSION() {
 
 #UPDATE_VERSION "软件包名" "测试版，true，可选，默认为否"
 #UPDATE_VERSION "sing-box"
+
 
 
 
