@@ -67,9 +67,9 @@ UPDATE_PACKAGE "luci-app-ipsec-server" "Ivaneus/luci-app-ipsec-server" "main" ""
 
 UPDATE_PACKAGE "luci-app-webdav" "kenzok8/small-package" "main" "pkg"
 UPDATE_PACKAGE "luci-app-unblockneteasemusic" "kenzok8/small-package" "main" "pkg"
-UPDATE_PACKAGE "viking" "VIKINGYFY/packages" "main" "" "luci-app-timewol luci-app-wolplus"
 
-
+UPDATE_PACKAGE "luci-app-timewol" "VIKINGYFY/packages"  "main" "pkg"
+UPDATE_PACKAGE "luci-app-wolplus" "VIKINGYFY/packages"  "main" "pkg"
 
 #UPDATE_PACKAGE "momo" "nikkinikki-org/OpenWrt-momo" "main"
 #UPDATE_PACKAGE "nikki" "nikkinikki-org/OpenWrt-nikki" "main"
@@ -148,6 +148,7 @@ UPDATE_VERSION() {
 
 #UPDATE_VERSION "软件包名" "测试版，true，可选，默认为否"
 #UPDATE_VERSION "sing-box"
+
 
 
 
