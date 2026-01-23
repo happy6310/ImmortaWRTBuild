@@ -2,11 +2,11 @@
 
 
 # === 确保 jq/host 存在 ===
-if [ ! -x "./staging_dir/host/bin/jq" ]; then
-    echo "Host jq not found, installing jq (host)..."
-    ./scripts/feeds update packages
-    ./scripts/feeds install jq
-fi
+#if [ ! -x "./staging_dir/host/bin/jq" ]; then
+#    echo "Host jq not found, installing jq (host)..."
+#    ./scripts/feeds update packages
+#    ./scripts/feeds install jq
+#fi
 
 
 # === 清理已知问题包（feeds 自带，但本项目禁用）===
