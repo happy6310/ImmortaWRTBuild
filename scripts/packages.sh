@@ -136,10 +136,10 @@ UPDATE_PACKAGE "luci-app-ipsec-server" "Ivaneus/luci-app-ipsec-server" "main" "n
 # =========================
 # kenzok8 small-package
 # =========================
-UPDATE_PACKAGE "luci-app-webdav" \
-	"kenzok8/small-package" \
-	"main" \
-	"pkg"
+# UPDATE_PACKAGE "luci-app-webdav" \
+# 	"kenzok8/small-package" \
+# 	"main" \
+# 	"pkg"
 
 # UPDATE_PACKAGE "luci-app-quickstart" \
 # 	"kenzok8/small-package" \
@@ -216,6 +216,7 @@ UPDATE_VERSION() {
 
 # UPDATE_VERSION "软件包名" "测试版，true，可选，默认为否"
 # UPDATE_VERSION "sing-box"
+
 
 
 
