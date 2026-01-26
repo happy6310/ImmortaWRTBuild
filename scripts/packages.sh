@@ -15,76 +15,44 @@ rm -rf ../feeds/packages/onionshare*
 # =========================
 # 安装和更新软件包
 # =========================
+#安装和更新软件包
 UPDATE_PACKAGE() {
 	local PKG_NAME=$1
 	local PKG_REPO=$2
 	local PKG_BRANCH=$3
-	local PKG_SPECIAL=$4          # pkg / name / 空
+	local PKG_SPECIAL=$4
 	local PKG_LIST=("$PKG_NAME" $5)  # 第5个参数为自定义名称列表
 	local REPO_NAME=${PKG_REPO#*/}
 
 	echo " "
 
-
-	# === 1. 删除已有目录 ===
+	# 删除本地可能存在的不同名称的软件包
 	for NAME in "${PKG_LIST[@]}"; do
-	    [ -z "$NAME" ] && continue
-	    echo "Search directory: $NAME"
-	    local FOUND_DIRS
-	    FOUND_DIRS=$(find ../feeds/luci/ ../feeds/packages/ -maxdepth 3 -type d \( -name "$NAME" -o -name "$NAME.git" \) 2>/dev/null)
-	    if [ -n "$FOUND_DIRS" ]; then
-	        while read -r DIR; do
-	            rm -rf "$DIR"
-	            echo "Deleted: $DIR"
-	        done <<< "$FOUND_DIRS"
-	    else
-	        echo "Not found: $NAME"
-	    fi
+		# 查找匹配的目录
+		echo "Search directory: $NAME"
+		local FOUND_DIRS=$(find ../feeds/luci/ ../feeds/packages/ -maxdepth 3 -type d -iname "*$NAME*" 2>/dev/null)
+
+		# 删除找到的目录
+		if [ -n "$FOUND_DIRS" ]; then
+			while read -r DIR; do
+				rm -rf "$DIR"
+				echo "Delete directory: $DIR"
+			done <<< "$FOUND_DIRS"
+		else
+			echo "Not fonud directory: $NAME"
+		fi
 	done
 
+	# 克隆 GitHub 仓库
+	git clone --depth=1 --single-branch --branch $PKG_BRANCH "https://github.com/$PKG_REPO.git"
 
-
-	# === 2. 克隆仓库 ===
-	rm -rf "$REPO_NAME"
-	git clone --depth=1 --single-branch --branch "$PKG_BRANCH" \
-		"https://github.com/$PKG_REPO.git"
-
-	# === 3. 按模式处理 ===
-	case "$PKG_SPECIAL" in
-		pkg)
-			# 大杂烩仓库，提取匹配目录
-			local FOUND_PKG_DIRS
-			FOUND_PKG_DIRS=$(find "./$REPO_NAME" -maxdepth 4 -type d -iname "$PKG_NAME" 2>/dev/null)
-			if [ -z "$FOUND_PKG_DIRS" ]; then
-				echo "ERROR: pkg $PKG_NAME not found in $PKG_REPO"
-				rm -rf "./$REPO_NAME"
-				exit 1
-			fi
-			while read -r DIR; do
-				cp -rf "$DIR" ./
-				echo "Copied $DIR to ./"
-			done <<< "$FOUND_PKG_DIRS"
-			rm -rf "./$REPO_NAME"
-			;;
-
-		name)
-			# 仓库名 != 包名
-			# mv -f "$REPO_NAME" "$PKG_NAME"
-		    if [ "$REPO_NAME" != "$PKG_NAME" ] && [ ! -d "$PKG_NAME" ]; then
-		        mv "$REPO_NAME" "$PKG_NAME"
-		    else
-		        echo "Skip rename: $REPO_NAME"
-		    fi			
-			;;
-
-		*)
-			# 默认整个仓库就是插件
-			# mv -f "$REPO_NAME" "$PKG_NAME"
-			if [[ "$REPO_NAME" != "$PKG_NAME" ]]; then
-			    mv -f "$REPO_NAME" "$PKG_NAME"
-			fi			
-			;;
-	esac
+	# 处理克隆的仓库
+	if [[ $PKG_SPECIAL == "pkg" ]]; then
+		find ./$REPO_NAME/*/ -maxdepth 3 -type d -iname "*$PKG_NAME*" -prune -exec cp -rf {} ./ \;
+		rm -rf ./$REPO_NAME/
+	elif [[ $PKG_SPECIAL == "name" ]]; then
+		mv -f $REPO_NAME $PKG_NAME
+	fi
 }
 
 
@@ -146,7 +114,7 @@ UPDATE_PACKAGE "luci-app-ipsec-server" "Ivaneus/luci-app-ipsec-server" "main" "n
 # 	"main" \
 # 	"pkg"
 
-UPDATE_PACKAGE "luci-app-quickstart" "kenzok8/small-package" "main" "pkg" "" "quickstart luci-app-store"
+# UPDATE_PACKAGE "luci-app-quickstart" "kenzok8/small-package" "main" "pkg" "" "quickstart luci-app-store"
 
 
 echo "All custom packages updated successfully."
@@ -216,6 +184,7 @@ UPDATE_VERSION() {
 
 # UPDATE_VERSION "软件包名" "测试版，true，可选，默认为否"
 # UPDATE_VERSION "sing-box"
+
 
 
 
