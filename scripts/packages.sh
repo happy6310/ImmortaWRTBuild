@@ -170,7 +170,19 @@ UPDATE_VERSION() {
 
 	for PKG_FILE in $PKG_FILES; do
 		local PKG_REPO=$(grep -Po "PKG_SOURCE_URL:=https://.*github.com/\K[^/]+/[^/]+(?=.*)" $PKG_FILE)
-		local PKG_TAG=$(curl -sL "https://api.github.com/repos/$PKG_REPO/releases" | jq -r "map(select(.prerelease == $PKG_MARK)) | first | .tag_name")
+		#local PKG_TAG=$(curl -sL "https://api.github.com/repos/$PKG_REPO/releases" | jq -r "map(select(.prerelease == $PKG_MARK)) | first | .tag_name")
+		local PKG_TAG=$(
+			curl -fsSL --connect-timeout 5 --max-time 10 \
+			"https://api.github.com/repos/$PKG_REPO/releases" \
+			| jq -r "map(select(.prerelease == $PKG_MARK)) | first | .tag_name" \
+			|| true
+		)
+		
+		[ -z "$PKG_TAG" ] && {
+			echo "WARN: $PKG_NAME: failed to fetch release tag, skip."
+			continue
+		}
+
 
 		local OLD_VER=$(grep -Po "PKG_VERSION:=\K.*" "$PKG_FILE")
 		local OLD_URL=$(grep -Po "PKG_SOURCE_URL:=\K.*" "$PKG_FILE")
@@ -181,7 +193,12 @@ UPDATE_VERSION() {
 
 		local NEW_VER=$(echo $PKG_TAG | sed -E 's/[^0-9]+/\./g; s/^\.|\.$//g')
 		local NEW_URL=$(echo $PKG_URL | sed "s/\$(PKG_VERSION)/$NEW_VER/g; s/\$(PKG_NAME)/$PKG_NAME/g")
-		local NEW_HASH=$(curl -sL "$NEW_URL" | sha256sum | cut -d ' ' -f 1)
+		#local NEW_HASH=$(curl -sL "$NEW_URL" | sha256sum | cut -d ' ' -f 1)
+
+		local NEW_HASH=$(
+			curl -fsSL --connect-timeout 5 --max-time 20 "$NEW_URL" \
+			| sha256sum | cut -d ' ' -f 1
+		)		
 
 		echo "old version: $OLD_VER $OLD_HASH"
 		echo "new version: $NEW_VER $NEW_HASH"
@@ -196,8 +213,9 @@ UPDATE_VERSION() {
 	done
 }
 
-#UPDATE_VERSION "软件包名" "测试版，true，可选，默认为否"
-#UPDATE_VERSION "sing-box"
+# UPDATE_VERSION "软件包名" "测试版，true，可选，默认为否"
+# UPDATE_VERSION "sing-box"
+
 
 
 
