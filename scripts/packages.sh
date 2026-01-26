@@ -128,7 +128,7 @@ UPDATE_PACKAGE "luci-app-ipsec-server" "Ivaneus/luci-app-ipsec-server" "main" "n
 #     └── luci-app-turboacc/
 # =========================
  
-UPDATE_PACKAGE "luci-app-turboacc" "chenmozhijin/turboacc" "luci" "pkg"
+# UPDATE_PACKAGE "luci-app-turboacc" "chenmozhijin/turboacc" "luci" "pkg"
 
 
 
@@ -216,6 +216,7 @@ UPDATE_VERSION() {
 
 # UPDATE_VERSION "软件包名" "测试版，true，可选，默认为否"
 # UPDATE_VERSION "sing-box"
+
 
 
 
