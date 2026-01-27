@@ -43,20 +43,28 @@ CONFIG_PACKAGE_luci-app-unblockneteasemusic=y
 CONFIG_PACKAGE_luci-app-vsftpd=y
 CONFIG_PACKAGE_luci-app-wol=y
 
+#
+# ===== IPsec（用户态，平台无关）=====
+#
+CONFIG_PACKAGE_luci-app-ipsec-server=y
+
+
+
+
+
 # wireguard
 CONFIG_PACKAGE_kmod-wireguard=y
-CONFIG_PACKAGE_luci-proto-wireguard=y
 CONFIG_PACKAGE_wireguard-tools=y
 
 
 
 # 解决警告
-CONFIG_PACKAGE_containerd=n
-CONFIG_PACKAGE_docker=n
-CONFIG_PACKAGE_luci-app-docker=n
-CONFIG_PACKAGE_luci-app-dockerman=n
-CONFIG_PACKAGE_runc=n
-CONFIG_PACKAGE_tini=n
+# CONFIG_PACKAGE_containerd=n
+# CONFIG_PACKAGE_docker=n
+# CONFIG_PACKAGE_luci-app-docker=n
+# CONFIG_PACKAGE_luci-app-dockerman=n
+# CONFIG_PACKAGE_runc=n
+# CONFIG_PACKAGE_tini=n
 
 
 
@@ -206,20 +214,6 @@ CONFIG_PACKAGE_tini=n
 # CONFIG_PACKAGE_luci-app-zerotier is not set
 
 
-# CONFIG_PACKAGE_luci-app-openclash=y
-# CONFIG_PACKAGE_clash=y
-
-# CONFIG_PACKAGE_luci-app-ddns=y
-# CONFIG_PACKAGE_ddns-scripts=y
-# CONFIG_PACKAGE_ddns-scripts-cloudflare=y
-# CONFIG_PACKAGE_ddns-scripts-aliyun=y
-# CONFIG_PACKAGE_ddns-scripts-dnspod=y
-
-# CONFIG_PACKAGE_luci-app-vsftpd=y
-# CONFIG_PACKAGE_vsftpd=y
-
-# CONFIG_PACKAGE_luci-app-adblock=y
-# CONFIG_PACKAGE_adblock-fast=y
 
 
 
@@ -232,36 +226,6 @@ CONFIG_PACKAGE_tini=n
 #
 
 
-#
-# ===== IPsec（用户态，平台无关）=====
-#
-CONFIG_PACKAGE_luci-app-ipsec-server=y
-
-
-# TurboACC LuCI
-# CONFIG_PACKAGE_luci-app-turboacc=y
-# 只用 flow offload
-# CONFIG_PACKAGE_kmod-nf-flow=y
-# CONFIG_PACKAGE_kmod-nf-flow6=y
-# CONFIG_KMOD_FAST_CLASSIFIER=y
-# CONFIG_KMOD_SHORTCUT_FE_CM=y
-# CONFIG_KMOD_SHORTCUT_FE_DRV=y
-
-# 禁用有坑的模块
-# CONFIG_PACKAGE_kmod-fast-classifier=n
-# CONFIG_PACKAGE_kmod-shortcut-fe=n
-
-
-
-
-
-# CONFIG_PACKAGE_luci-app-quickstart=y
-
-# CONFIG_PACKAGE_luci-app-webdav=n
-
-# =====  禁用 =====
-
-# CONFIG_PACKAGE_luci-app-ssr-plus=y
 
 
 
@@ -269,6 +233,46 @@ CONFIG_PACKAGE_luci-app-ipsec-server=y
 
 
 
+
+# autocore
+# base-files
+# bash
+# block-mount
+# ca-bundle
+# coremark
+# curl
+# dnsmasq-full
+# dropbear
+# ds-lite
+# firewall4
+# fstools
+# htop
+# kmod-gpio-button-hotplug
+# kmod-leds-gpio
+# kmod-lib-zstd
+# kmod-tcp-bbr
+# libc
+# libgcc
+# libustream-mbedtls
+# logd
+# mtd
+# nano
+# netifd
+# odhcp6c
+# odhcpd-ipv6only
+# openssh-sftp-server
+# opkg
+# ppp
+# ppp-mod-pppoe
+# resolveip
+# swconfig
+# uboot-envtools
+# uci
+# uclient-fetch
+# urandom-seed
+# urngd
+# wget-ssl
+# zram-swap
 
 
 
