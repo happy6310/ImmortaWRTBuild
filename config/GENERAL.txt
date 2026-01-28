@@ -2,31 +2,16 @@
 # ===== LuCI 基础 =====
 #
 CONFIG_PACKAGE_luci=y
+CONFIG_PACKAGE_luci-base=y
+CONFIG_PACKAGE_luci-compat=y
 CONFIG_PACKAGE_luci-lib-base=y
 CONFIG_PACKAGE_luci-lua-runtime=y
 CONFIG_LUCI_LANG_zh_Hans=y
 
 
-CONFIG_PACKAGE_luci-app-advancedplus=y
-CONFIG_PACKAGE_luci-app-fan=y
-CONFIG_PACKAGE_luci-app-filemanager=y
-CONFIG_PACKAGE_luci-app-firewall=y
-CONFIG_PACKAGE_luci-app-package-manager=y
-CONFIG_PACKAGE_luci-app-syscontrol=y
-CONFIG_PACKAGE_luci-app-upnp=y
-CONFIG_PACKAGE_luci-app-wizard=y
-CONFIG_PACKAGE_luci-app-base=y
-CONFIG_PACKAGE_luci-compat=y
-CONFIG_PACKAGE_luci-lib-fs=y
-CONFIG_PACKAGE_luci-lib-ipkg=y
-CONFIG_PACKAGE_luci-proto-wireguard=y
-
-
-
 # 主题
 CONFIG_PACKAGE_luci-theme-argon=y
 CONFIG_PACKAGE_luci-app-argon-config=y
-
 
 
 # === 仓库内启用 ====
@@ -43,244 +28,82 @@ CONFIG_PACKAGE_luci-app-unblockneteasemusic=y
 CONFIG_PACKAGE_luci-app-vsftpd=y
 CONFIG_PACKAGE_luci-app-wol=y
 
-#
-# ===== IPsec（用户态，平台无关）=====
-#
-CONFIG_PACKAGE_luci-app-ipsec-server=y
 
 
+# ===== 您需要的第三方LUCI插件 =====
+CONFIG_PACKAGE_luci-app-advancedplus=y
+CONFIG_PACKAGE_luci-app-fan=y
+CONFIG_PACKAGE_luci-app-filemanager=y
+CONFIG_PACKAGE_luci-app-firewall=y
+CONFIG_PACKAGE_luci-app-package-manager=y
+CONFIG_PACKAGE_luci-app-syscontrol=y
+CONFIG_PACKAGE_luci-app-upnp=y
+CONFIG_PACKAGE_luci-app-wizard=y
 
 
+# ===== LuCI 库文件 =====
+CONFIG_PACKAGE_luci-lib-fs=y
+CONFIG_PACKAGE_luci-lib-ipkg=y
+CONFIG_PACKAGE_luci-proto-wireguard=y
 
-# wireguard
+
+# ===== 基础系统组件 =====
+CONFIG_PACKAGE_autocore=y
+CONFIG_PACKAGE_base-files=y
+CONFIG_PACKAGE_bash=y
+CONFIG_PACKAGE_block-mount=y
+CONFIG_PACKAGE_ca-bundle=y
+CONFIG_PACKAGE_coremark=y
+CONFIG_PACKAGE_curl=y
+CONFIG_PACKAGE_dnsmasq-full=y
+CONFIG_PACKAGE_dropbear=y
+CONFIG_PACKAGE_ds-lite=y
+CONFIG_PACKAGE_firewall4=y
+CONFIG_PACKAGE_fstools=y
+CONFIG_PACKAGE_htop=y
+
+# ===== 内核模块 =====
+CONFIG_PACKAGE_kmod-gpio-button-hotplug=y
+CONFIG_PACKAGE_kmod-leds-gpio=y
+CONFIG_PACKAGE_kmod-lib-zstd=y
+CONFIG_PACKAGE_kmod-tcp-bbr=y
+
+
+# ===== WireGuard VPN =====
 CONFIG_PACKAGE_kmod-wireguard=y
 CONFIG_PACKAGE_wireguard-tools=y
 
 
-
-# 解决警告
-# CONFIG_PACKAGE_containerd=n
-# CONFIG_PACKAGE_docker=n
-# CONFIG_PACKAGE_luci-app-docker=n
-# CONFIG_PACKAGE_luci-app-dockerman=n
-# CONFIG_PACKAGE_runc=n
-# CONFIG_PACKAGE_tini=n
+# ===== 系统库文件 =====
+CONFIG_PACKAGE_libc=y
+CONFIG_PACKAGE_libgcc=y
+CONFIG_PACKAGE_libustream-mbedtls=y
 
 
 
-# ===== LuCI 其他不用的 =====
-# CONFIG_PACKAGE_luci-app-3cat is not set
-# CONFIG_PACKAGE_luci-app-3ginfo-lite is not set
-# CONFIG_PACKAGE_luci-app-acl is not set
-# CONFIG_PACKAGE_luci-app-acme is not set
-# CONFIG_PACKAGE_luci-app-advanced-reboot is not set
-# CONFIG_PACKAGE_luci-app-airplay2 is not set
-# CONFIG_PACKAGE_luci-app-amule is not set
-# CONFIG_PACKAGE_luci-app-antiblock is not set
-# CONFIG_PACKAGE_luci-app-apinger is not set
-# CONFIG_PACKAGE_luci-app-appfilter is not set
-# CONFIG_PACKAGE_luci-app-aria2 is not set
-# CONFIG_PACKAGE_luci-app-attendedsysupgrade is not set
-# CONFIG_PACKAGE_luci-app-babeld is not set
-# CONFIG_PACKAGE_luci-app-banip is not set
-# CONFIG_PACKAGE_luci-app-bcp38 is not set
-# CONFIG_PACKAGE_luci-app-bitsrunlogin-go is not set
-# CONFIG_PACKAGE_luci-app-bmx7 is not set
-# CONFIG_PACKAGE_luci-app-cd8021x is not set
-# CONFIG_PACKAGE_luci-app-chrony is not set
-# CONFIG_PACKAGE_luci-app-cifs-mount is not set
-# CONFIG_PACKAGE_luci-app-clamav is not set
-# CONFIG_PACKAGE_luci-app-cloudflared is not set
-# CONFIG_PACKAGE_luci-app-commands is not set
-# CONFIG_PACKAGE_luci-app-coovachilli is not set
-# CONFIG_PACKAGE_luci-app-cpufreq is not set
-# CONFIG_PACKAGE_luci-app-cpulimit is not set
-# CONFIG_PACKAGE_luci-app-crowdsec-firewall-bouncer is not set
-# CONFIG_PACKAGE_luci-app-csshnpd is not set
-# CONFIG_PACKAGE_luci-app-dae is not set
-# CONFIG_PACKAGE_luci-app-daed is not set
-# CONFIG_PACKAGE_luci-app-dawn is not set
-# CONFIG_PACKAGE_luci-app-dcwapd is not set
-# CONFIG_PACKAGE_luci-app-ddns-go is not set
-# CONFIG_PACKAGE_luci-app-diskman is not set
-# CONFIG_PACKAGE_luci-app-docker is not set
-# CONFIG_PACKAGE_luci-app-dockerman is not set
-# CONFIG_PACKAGE_luci-app-dufs is not set
-# CONFIG_PACKAGE_luci-app-dump1090 is not set
-# CONFIG_PACKAGE_luci-app-email is not set
-# CONFIG_PACKAGE_luci-app-eoip is not set
-# CONFIG_PACKAGE_luci-app-eqos is not set
-# CONFIG_PACKAGE_luci-app-example is not set
-# CONFIG_PACKAGE_luci-app-filebrowser is not set
-# CONFIG_PACKAGE_luci-app-filebrowser-go is not set
-# CONFIG_PACKAGE_luci-app-frpc is not set
-# CONFIG_PACKAGE_luci-app-frps is not set
-# CONFIG_PACKAGE_luci-app-fwknopd is not set
-# CONFIG_PACKAGE_luci-app-gost is not set
-# CONFIG_PACKAGE_luci-app-hd-idle is not set
-# CONFIG_PACKAGE_luci-app-homeproxy is not set
-# CONFIG_PACKAGE_luci-app-https-dns-proxy is not set
-# CONFIG_PACKAGE_luci-app-ipsec-vpnd is not set
-# CONFIG_PACKAGE_luci-app-irqbalance is not set
-# CONFIG_PACKAGE_luci-app-k3screenctrl is not set
-# CONFIG_PACKAGE_luci-app-keepalived is not set
-# CONFIG_PACKAGE_luci-app-ksmbd is not set
-# CONFIG_PACKAGE_luci-app-ledtrig-rssi is not set
-# CONFIG_PACKAGE_luci-app-ledtrig-switch is not set
-# CONFIG_PACKAGE_luci-app-ledtrig-usbport is not set
-# CONFIG_PACKAGE_luci-app-libreswan is not set
-# CONFIG_PACKAGE_luci-app-lldpd is not set
-# CONFIG_PACKAGE_luci-app-lorawan-basicstation is not set
-# CONFIG_PACKAGE_luci-app-lxc is not set
-# CONFIG_PACKAGE_luci-app-microsocks is not set
-# CONFIG_PACKAGE_luci-app-minidlna is not set
-# CONFIG_PACKAGE_luci-app-mjpg-streamer is not set
-# CONFIG_PACKAGE_luci-app-modemband is not set
-# CONFIG_PACKAGE_luci-app-mosquitto is not set
-# CONFIG_PACKAGE_luci-app-msd_lite is not set
-# CONFIG_PACKAGE_luci-app-music-remote-center is not set
-# CONFIG_PACKAGE_luci-app-mwan3 is not set
-# CONFIG_PACKAGE_luci-app-n2n is not set
-# CONFIG_PACKAGE_luci-app-natmap is not set
-# CONFIG_PACKAGE_luci-app-netdata is not set
-# CONFIG_PACKAGE_luci-app-nextdns is not set
-# CONFIG_PACKAGE_luci-app-nfs is not set
-# CONFIG_PACKAGE_luci-app-ngrokc is not set
-# CONFIG_PACKAGE_luci-app-njitclient is not set
-# CONFIG_PACKAGE_luci-app-nlbwmon is not set
-# CONFIG_PACKAGE_luci-app-nps is not set
-# CONFIG_PACKAGE_luci-app-nut is not set
-# CONFIG_PACKAGE_luci-app-ocserv is not set
-# CONFIG_PACKAGE_luci-app-oled is not set
-# CONFIG_PACKAGE_luci-app-olsr is not set
-# CONFIG_PACKAGE_luci-app-olsr-services is not set
-# CONFIG_PACKAGE_luci-app-olsr-viz is not set
-# CONFIG_PACKAGE_luci-app-omcproxy is not set
-# CONFIG_PACKAGE_luci-app-openlist is not set
-# CONFIG_PACKAGE_luci-app-openvpn is not set
-# CONFIG_PACKAGE_luci-app-openvpn-server is not set
-# CONFIG_PACKAGE_luci-app-openwisp is not set
-# CONFIG_PACKAGE_luci-app-oscam is not set
-# CONFIG_PACKAGE_luci-app-p910nd is not set
-# CONFIG_PACKAGE_luci-app-pagekitec is not set
-# CONFIG_PACKAGE_luci-app-pbr is not set
-# CONFIG_PACKAGE_luci-app-pppoe-relay is not set
-# CONFIG_PACKAGE_luci-app-pppoe-server is not set
-# CONFIG_PACKAGE_luci-app-privoxy is not set
-# CONFIG_PACKAGE_luci-app-ps3netsrv is not set
-# CONFIG_PACKAGE_luci-app-qbittorrent is not set
-# CONFIG_PACKAGE_luci-app-qos is not set
-# CONFIG_PACKAGE_luci-app-radicale2 is not set
-# CONFIG_PACKAGE_luci-app-ramfree is not set
-# CONFIG_PACKAGE_luci-app-rclone is not set
-# CONFIG_PACKAGE_luci-app-rp-pppoe-server is not set
-# CONFIG_PACKAGE_luci-app-rustdesk-server is not set
-# CONFIG_PACKAGE_luci-app-scutclient is not set
-# CONFIG_PACKAGE_luci-app-ser2net is not set
-# CONFIG_PACKAGE_luci-app-smartdns is not set
-# CONFIG_PACKAGE_luci-app-sms-tool-js is not set
-# CONFIG_PACKAGE_luci-app-snmpd is not set
-# CONFIG_PACKAGE_luci-app-softether is not set
-# CONFIG_PACKAGE_luci-app-softethervpn is not set
-# CONFIG_PACKAGE_luci-app-splash is not set
-# CONFIG_PACKAGE_luci-app-spotifyd is not set
-# CONFIG_PACKAGE_luci-app-sqm is not set
-# CONFIG_PACKAGE_luci-app-squid is not set
-# CONFIG_PACKAGE_luci-app-sshtunnel is not set
-# CONFIG_PACKAGE_luci-app-statistics is not set
-# CONFIG_PACKAGE_luci-app-strongswan-swanctl is not set
-# CONFIG_PACKAGE_luci-app-syncdial is not set
-# CONFIG_PACKAGE_luci-app-syncthing is not set
-# CONFIG_PACKAGE_luci-app-sysuh3c is not set
-# CONFIG_PACKAGE_luci-app-tinyproxy is not set
-# CONFIG_PACKAGE_luci-app-tor is not set
-# CONFIG_PACKAGE_luci-app-transmission is not set
-# CONFIG_PACKAGE_luci-app-travelmate is not set
-# CONFIG_PACKAGE_luci-app-ua2f is not set
-# CONFIG_PACKAGE_luci-app-udpxy is not set
-# CONFIG_PACKAGE_luci-app-uhttpd is not set
-# CONFIG_PACKAGE_luci-app-unbound is not set
-# CONFIG_PACKAGE_luci-app-usb-printer is not set
-# CONFIG_PACKAGE_luci-app-usteer is not set
-# CONFIG_PACKAGE_luci-app-v2raya is not set
-# CONFIG_PACKAGE_luci-app-vlmcsd is not set
-# CONFIG_PACKAGE_luci-app-vnstat2 is not set
-# CONFIG_PACKAGE_luci-app-watchcat is not set
-# CONFIG_PACKAGE_luci-app-wechatpush is not set
-# CONFIG_PACKAGE_luci-app-wifischedule is not set
-# CONFIG_PACKAGE_luci-app-xfrpc is not set
-# CONFIG_PACKAGE_luci-app-xinetd is not set
-# CONFIG_PACKAGE_luci-app-xlnetacc is not set
-# CONFIG_PACKAGE_luci-app-zerotier is not set
+# ===== 系统服务 =====
+CONFIG_PACKAGE_logd=y
+CONFIG_PACKAGE_mtd=y
+CONFIG_PACKAGE_nano=y
+CONFIG_PACKAGE_netifd=y
+CONFIG_PACKAGE_odhcp6c=y
+CONFIG_PACKAGE_odhcpd-ipv6only=y
+CONFIG_PACKAGE_openssh-sftp-server=y
+CONFIG_PACKAGE_opkg=y
+CONFIG_PACKAGE_ppp=y
+CONFIG_PACKAGE_ppp-mod-pppoe=y
+CONFIG_PACKAGE_resolveip=y
+CONFIG_PACKAGE_swconfig=y
+CONFIG_PACKAGE_uboot-envtools=y
+CONFIG_PACKAGE_uci=y
+CONFIG_PACKAGE_uclient-fetch=y
+CONFIG_PACKAGE_urandom-seed=y
+CONFIG_PACKAGE_urngd=y
+CONFIG_PACKAGE_wget-ssl=y
 
+# ===== 内存优化 =====
+CONFIG_PACKAGE_zram-swap=y
 
-
-
-
-
-
-
-
-#
-# ===== 外部仓库默认主题 =====
-#
-
-
-
-
-
-
-
-
-
-
-# autocore
-# base-files
-# bash
-# block-mount
-# ca-bundle
-# coremark
-# curl
-# dnsmasq-full
-# dropbear
-# ds-lite
-# firewall4
-# fstools
-# htop
-# kmod-gpio-button-hotplug
-# kmod-leds-gpio
-# kmod-lib-zstd
-# kmod-tcp-bbr
-# libc
-# libgcc
-# libustream-mbedtls
-# logd
-# mtd
-# nano
-# netifd
-# odhcp6c
-# odhcpd-ipv6only
-# openssh-sftp-server
-# opkg
-# ppp
-# ppp-mod-pppoe
-# resolveip
-# swconfig
-# uboot-envtools
-# uci
-# uclient-fetch
-# urandom-seed
-# urngd
-# wget-ssl
-# zram-swap
-
-
-
-
-
-
-
-
-
-
-
+# ===== IPsec VPN =====
+CONFIG_PACKAGE_luci-app-ipsec-server=y
+ 
