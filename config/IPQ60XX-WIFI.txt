@@ -5,6 +5,21 @@ CONFIG_TARGET_qualcommax_ipq60xx=y
 CONFIG_TARGET_DEVICE_qualcommax_ipq60xx_DEVICE_jdcloud_re-cs-02=y
 
 
+# ===== 禁用其他所有设备（关键）=====
+CONFIG_TARGET_DEVICE_qualcommax_ipq60xx_DEVICE_8devices_mango-dvk=n
+CONFIG_TARGET_DEVICE_qualcommax_ipq60xx_DEVICE_8devices_mango-srf=n
+CONFIG_TARGET_DEVICE_qualcommax_ipq60xx_DEVICE_8devices_mango-evb=n
+CONFIG_TARGET_DEVICE_qualcommax_ipq60xx_DEVICE_cig_wf188=n
+CONFIG_TARGET_DEVICE_qualcommax_ipq60xx_DEVICE_cig_wf188n=n
+CONFIG_TARGET_DEVICE_qualcommax_ipq60xx_DEVICE_glinet_gl-ax1800=n
+CONFIG_TARGET_DEVICE_qualcommax_ipq60xx_DEVICE_glinet_gl-axt1800=n
+CONFIG_TARGET_DEVICE_qualcommax_ipq60xx_DEVICE_wallys_dr6018=n
+CONFIG_TARGET_DEVICE_qualcommax_ipq60xx_DEVICE_wallys_dr6018-v4=n
+
+CONFIG_TARGET_MULTI_PROFILE=n
+
+
+
 
 # ===== 文件系统配置 =====
 CONFIG_TARGET_ROOTFS_SQUASHFS=y
@@ -101,8 +116,9 @@ CONFIG_PACKAGE_kmod-qca-nss-drv-vlan-mgr=y
 CONFIG_PACKAGE_kmod-qca-nss-drv-vxlanmgr=y
 CONFIG_PACKAGE_kmod-qca-nss-drv-wifi-meshmgr=y
 
-
-
+# ===== 关键：禁用不必要的U-Boot和ATF =====
+# 京东云百里通常不需要单独的U-Boot包
+CONFIG_PACKAGE_uboot-envtools=n
 
 
 
