@@ -88,19 +88,19 @@ CONFIG_PACKAGE_wpad-openssl=y
 # CONFIG_PACKAGE_wpad-basic-mbedtls=n  
 
 # 禁用其他所有U-Boot
-CONFIG_PACKAGE_uboot-mediatek_mt7981_openwrt_one-snand=n
-CONFIG_PACKAGE_uboot-mediatek_mt7981_openwrt_one-emmc=n
-CONFIG_PACKAGE_uboot-mediatek_mt7981_openwrt_one-spim-nand=n
-CONFIG_PACKAGE_uboot-mediatek_mt7986_redmi-ax6000-stock=n
+# CONFIG_PACKAGE_uboot-mediatek_mt7981_openwrt_one-snand=n
+# CONFIG_PACKAGE_uboot-mediatek_mt7981_openwrt_one-emmc=n
+# CONFIG_PACKAGE_uboot-mediatek_mt7981_openwrt_one-spim-nand=n
+# CONFIG_PACKAGE_uboot-mediatek_mt7986_redmi-ax6000-stock=n
 
 # 禁用其他ATF
-CONFIG_PACKAGE_arm-trusted-firmware-mediatek-mt7981-ram-ddr3=n
-CONFIG_PACKAGE_arm-trusted-firmware-mediatek-mt7981-ram-ddr4=n
-CONFIG_PACKAGE_arm-trusted-firmware-mediatek-mt7986-ram-ddr3=n
-CONFIG_PACKAGE_arm-trusted-firmware-mediatek-mt7987-ram-comb=n
-CONFIG_PACKAGE_arm-trusted-firmware-mediatek-mt7988-ram-comb=n
-CONFIG_PACKAGE_arm-trusted-firmware-mediatek-mt7988-ram-ddr3=n
-CONFIG_PACKAGE_arm-trusted-firmware-mediatek-mt7988-ram-ddr4=n
+# CONFIG_PACKAGE_arm-trusted-firmware-mediatek-mt7981-ram-ddr3=n
+# CONFIG_PACKAGE_arm-trusted-firmware-mediatek-mt7981-ram-ddr4=n
+# CONFIG_PACKAGE_arm-trusted-firmware-mediatek-mt7986-ram-ddr3=n
+# CONFIG_PACKAGE_arm-trusted-firmware-mediatek-mt7987-ram-comb=n
+# CONFIG_PACKAGE_arm-trusted-firmware-mediatek-mt7988-ram-comb=n
+# CONFIG_PACKAGE_arm-trusted-firmware-mediatek-mt7988-ram-ddr3=n
+# CONFIG_PACKAGE_arm-trusted-firmware-mediatek-mt7988-ram-ddr4=n
 
 
 
