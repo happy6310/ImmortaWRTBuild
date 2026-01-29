@@ -4,19 +4,22 @@ CONFIG_TARGET_mediatek_filogic=y
 
 # 设备列表（建议只保留 ubootmod，更稳定）
 CONFIG_TARGET_DEVICE_mediatek_filogic_DEVICE_xiaomi_redmi-router-ax6000-ubootmod=y
-# CONFIG_TARGET_DEVICE_mediatek_filogic_DEVICE_xiaomi_redmi-router-ax6000-stock=n
 
-# ===== 禁用其他所有MT7986设备 =====
-# 这是关键：必须禁用其他所有设备，只保留AX6000
-# CONFIG_TARGET_DEVICE_mediatek_filogic_DEVICE_openwrt_one=n
-# CONFIG_TARGET_DEVICE_mediatek_filogic_DEVICE_mediatek_filogic-a6000-istore=n
-# CONFIG_TARGET_DEVICE_mediatek_filogic_DEVICE_cetron_ct3003=n
-# CONFIG_TARGET_DEVICE_mediatek_filogic_DEVICE_glinet_gl-mt6000=n
-# CONFIG_TARGET_DEVICE_mediatek_filogic_DEVICE_hiwifi_cmcc-rax3000m-emmc-ubootmod=n
-# CONFIG_TARGET_DEVICE_mediatek_filogic_DEVICE_hiwifi_cmcc-rax3000m-nand-ubootmod=n
-# CONFIG_TARGET_DEVICE_mediatek_filogic_DEVICE_mediatek_mt7981-ax3000=n
-# CONFIG_TARGET_DEVICE_mediatek_filogic_DEVICE_qihoo_360t7-ubootmod=n
-# CONFIG_TARGET_DEVICE_mediatek_filogic_DEVICE_zyxel_ex5700-t0-ubootmod=n
+
+# ===== 禁用其他所有 MT7986 / filogic 设备 =====
+# CONFIG_TARGET_DEVICE_mediatek_filogic_DEVICE_openwrt_one is not set
+# CONFIG_TARGET_DEVICE_mediatek_filogic_DEVICE_mediatek_filogic-a6000-istore is not set
+# CONFIG_TARGET_DEVICE_mediatek_filogic_DEVICE_cetron_ct3003 is not set
+# CONFIG_TARGET_DEVICE_mediatek_filogic_DEVICE_glinet_gl-mt6000 is not set
+# CONFIG_TARGET_DEVICE_mediatek_filogic_DEVICE_hiwifi_cmcc-rax3000m-emmc-ubootmod is not set
+# CONFIG_TARGET_DEVICE_mediatek_filogic_DEVICE_hiwifi_cmcc-rax3000m-nand-ubootmod is not set
+# CONFIG_TARGET_DEVICE_mediatek_filogic_DEVICE_mediatek_mt7981-ax3000 is not set
+# CONFIG_TARGET_DEVICE_mediatek_filogic_DEVICE_qihoo_360t7-ubootmod is not set
+# CONFIG_TARGET_DEVICE_mediatek_filogic_DEVICE_zyxel_ex5700-t0-ubootmod is not set
+
+
+
+CONFIG_TARGET_ALL_PROFILES=n
 
 CONFIG_TARGET_MULTI_PROFILE=n
 CONFIG_TARGET_PER_DEVICE_ROOTFS=y
