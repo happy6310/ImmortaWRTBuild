@@ -33,7 +33,7 @@ jobs:
       #max-parallel: 3
       matrix:
         # CONFIG: [MEDIATEK, X86]
-        CONFIG: [ax6000]
+        CONFIG: [AX6000]
         SOURCE: [VIKINGYFY/immortalwrt]
         BRANCH: [owrt]
 
