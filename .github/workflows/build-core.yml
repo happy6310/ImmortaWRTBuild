@@ -152,15 +152,22 @@ jobs:
 
       - name: Run Extra Script (Optional)
         run: |
-          if [ -n "$WRT_EXTRA_SCRIPT" ] && [ -f "$GITHUB_WORKSPACE/$WRT_EXTRA_SCRIPT" ]; then
-            echo "[INFO] Run extra script: $WRT_EXTRA_SCRIPT"
-            chmod +x "$GITHUB_WORKSPACE/$WRT_EXTRA_SCRIPT"
-            cd ./wrt
-            bash "$GITHUB_WORKSPACE/$WRT_EXTRA_SCRIPT"
-          else
-            echo "[INFO] No extra script, skip."
+          if [ -z "$WRT_EXTRA_SCRIPT" ]; then
+            echo "[INFO] WRT_EXTRA_SCRIPT empty, skip."
+            exit 0
           fi
+      
+          if [ ! -f "$GITHUB_WORKSPACE/$WRT_EXTRA_SCRIPT" ]; then
+            echo "[WARN] Script not found: $WRT_EXTRA_SCRIPT"
+            exit 0
+          fi
+      
+          echo "[INFO] Run extra script: $WRT_EXTRA_SCRIPT"
+          chmod +x "$GITHUB_WORKSPACE/$WRT_EXTRA_SCRIPT"
+          cd ./wrt
+          bash "$GITHUB_WORKSPACE/$WRT_EXTRA_SCRIPT"
 
+    
     
           
       - name: Update Feeds
