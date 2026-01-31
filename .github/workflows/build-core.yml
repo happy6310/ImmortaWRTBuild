@@ -143,6 +143,22 @@ jobs:
             echo "caches cleanup done!"
           fi
 
+
+      - name: Extra Feeds (Optional)
+        run: |
+          cd ./wrt/
+
+          EXTRA_FEEDS_SCRIPT="$GITHUB_WORKSPACE/scripts/feeds-extra.sh"
+
+          if [ -f "$EXTRA_FEEDS_SCRIPT" ]; then
+            echo "[core] run extra feeds script"
+            chmod +x "$EXTRA_FEEDS_SCRIPT"
+            "$EXTRA_FEEDS_SCRIPT"
+          else
+            echo "[core] no extra feeds script, skip"
+          fi
+
+          
       - name: Update Feeds
         run: |
           cd ./wrt/
