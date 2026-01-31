@@ -18,11 +18,10 @@ CONFIG_PACKAGE_luci-app-argon-config=y
 CONFIG_PACKAGE_luci-app-adblock=y
 CONFIG_PACKAGE_luci-app-adblock-fast=y
 CONFIG_PACKAGE_luci-app-arpbind=y
+
+
 CONFIG_PACKAGE_luci-app-autoreboot=y
 CONFIG_PACKAGE_luci-app-ddns=y
-CONFIG_PACKAGE_luci-app-openclash=y
-# 编译时间太长，先不要了
-# CONFIG_PACKAGE_luci-app-samba4=n
 CONFIG_PACKAGE_luci-app-timewol=y
 CONFIG_PACKAGE_luci-app-ttyd=y
 CONFIG_PACKAGE_luci-app-unblockneteasemusic=y
@@ -31,7 +30,21 @@ CONFIG_PACKAGE_luci-app-wol=y
 
 
 
+CONFIG_PACKAGE_luci-app-openclash=y
+
+
+# ===== 仓库自带基础插件 =====
+CONFIG_PACKAGE_luci-app-advancedplus=y
+CONFIG_PACKAGE_luci-app-fan=y
+CONFIG_PACKAGE_luci-app-filemanager=y
+CONFIG_PACKAGE_luci-app-firewall=y
+CONFIG_PACKAGE_luci-app-package-manager=y
+CONFIG_PACKAGE_luci-app-syscontrol=y
+CONFIG_PACKAGE_luci-app-upnp=y
+CONFIG_PACKAGE_luci-app-wizard=y
+
 # ===== 您需要的第三方LUCI插件 =====
+
 CONFIG_PACKAGE_luci-app-advancedplus=y
 CONFIG_PACKAGE_luci-app-fan=y
 CONFIG_PACKAGE_luci-app-filemanager=y
@@ -42,10 +55,13 @@ CONFIG_PACKAGE_luci-app-upnp=y
 CONFIG_PACKAGE_luci-app-wizard=y
 
 
+
 # ===== LuCI 库文件 =====
 CONFIG_PACKAGE_luci-lib-fs=y
 CONFIG_PACKAGE_luci-lib-ipkg=y
 CONFIG_PACKAGE_luci-proto-wireguard=y
+
+
 
 
 # ===== 基础系统组件 =====
@@ -75,37 +91,7 @@ CONFIG_PACKAGE_kmod-wireguard=y
 CONFIG_PACKAGE_wireguard-tools=y
 
 
-# ===== 系统库文件 =====
-CONFIG_PACKAGE_libc=y
-CONFIG_PACKAGE_libgcc=y
-CONFIG_PACKAGE_libustream-mbedtls=y
-
-
-
-# ===== 系统服务 =====
-CONFIG_PACKAGE_logd=y
-CONFIG_PACKAGE_mtd=y
-CONFIG_PACKAGE_nano=y
-CONFIG_PACKAGE_netifd=y
-CONFIG_PACKAGE_odhcp6c=y
-CONFIG_PACKAGE_odhcpd-ipv6only=y
-CONFIG_PACKAGE_openssh-sftp-server=y
-CONFIG_PACKAGE_opkg=y
-CONFIG_PACKAGE_ppp=y
-CONFIG_PACKAGE_ppp-mod-pppoe=y
-CONFIG_PACKAGE_resolveip=y
-CONFIG_PACKAGE_swconfig=y
-CONFIG_PACKAGE_uboot-envtools=y
-CONFIG_PACKAGE_uci=y
-CONFIG_PACKAGE_uclient-fetch=y
-CONFIG_PACKAGE_urandom-seed=y
-CONFIG_PACKAGE_urngd=y
-CONFIG_PACKAGE_wget-ssl=y
 
 # ===== 内存优化 =====
 CONFIG_PACKAGE_zram-swap=y
-
-# ===== IPsec VPN =====
-CONFIG_PACKAGE_luci-app-ipsec-server=y
- 
 
