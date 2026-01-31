@@ -152,7 +152,7 @@ jobs:
 
       - name: Run Extra Script (Optional)
         run: |
-          cd ./wrt/package/
+          cd ./wrt/
           if [ -z "$WRT_EXTRA_SCRIPT" ]; then
             echo "[INFO] WRT_EXTRA_SCRIPT empty, skip."
             exit 0
