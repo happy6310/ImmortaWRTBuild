@@ -64,3 +64,5 @@ jobs:
       WRT_PACKAGE: ${{inputs.PACKAGE}}
       #仅输出配置文件
       WRT_TEST: ${{inputs.TEST}}
+      #自定义仓库地址 
+      WRT_EXTRA_SCRIPT: scripts/feeds_extra.sh
