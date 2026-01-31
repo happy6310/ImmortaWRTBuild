@@ -40,6 +40,10 @@ on:
       WRT_TEST:
         required: false
         type: string
+      WRT_EXTRA_SCRIPT:
+        required: false
+        type: string
+    
 
 env:
   GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
@@ -54,6 +58,7 @@ env:
   WRT_BRANCH: ${{inputs.WRT_BRANCH}}
   WRT_PACKAGE: ${{inputs.WRT_PACKAGE}}
   WRT_TEST: ${{inputs.WRT_TEST}}
+  WRT_EXTRA_SCRIPT: ${{inputs.WRT_EXTRA_SCRIPT}}
 
 jobs:
   core:
@@ -144,20 +149,19 @@ jobs:
           fi
 
 
-      - name: Extra Feeds (Optional)
+
+      - name: Run Extra Script (Optional)
         run: |
-          cd ./wrt/
-
-          EXTRA_FEEDS_SCRIPT="$GITHUB_WORKSPACE/scripts/feeds-extra.sh"
-
-          if [ -f "$EXTRA_FEEDS_SCRIPT" ]; then
-            echo "[core] run extra feeds script"
-            chmod +x "$EXTRA_FEEDS_SCRIPT"
-            "$EXTRA_FEEDS_SCRIPT"
+          if [ -n "$WRT_EXTRA_SCRIPT" ] && [ -f "$GITHUB_WORKSPACE/$WRT_EXTRA_SCRIPT" ]; then
+            echo "[INFO] Run extra script: $WRT_EXTRA_SCRIPT"
+            chmod +x "$GITHUB_WORKSPACE/$WRT_EXTRA_SCRIPT"
+            cd ./wrt
+            bash "$GITHUB_WORKSPACE/$WRT_EXTRA_SCRIPT"
           else
-            echo "[core] no extra feeds script, skip"
+            echo "[INFO] No extra script, skip."
           fi
 
+    
           
       - name: Update Feeds
         run: |
