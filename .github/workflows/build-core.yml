@@ -152,6 +152,7 @@ jobs:
 
       - name: Run Extra Script (Optional)
         run: |
+          cd ./wrt/package/
           if [ -z "$WRT_EXTRA_SCRIPT" ]; then
             echo "[INFO] WRT_EXTRA_SCRIPT empty, skip."
             exit 0
@@ -165,7 +166,7 @@ jobs:
           echo "[INFO] Run extra script: $WRT_EXTRA_SCRIPT"
           chmod +x "$GITHUB_WORKSPACE/$WRT_EXTRA_SCRIPT"
           # cd ./wrt
-          cd ./wrt/package/
+          
           bash "$GITHUB_WORKSPACE/$WRT_EXTRA_SCRIPT"
 
     
