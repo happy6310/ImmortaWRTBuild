@@ -4,5 +4,7 @@ set -e
 echo "[INFO] Apply extra feeds config..."
 
 ## 添加自己的插件库
-sed -i "1isrc-git extraipk https://github.com/xiangfeidexiaohuo/extra-ipk\n" feeds.conf.default
+# sed -i "1isrc-git extraipk https://github.com/xiangfeidexiaohuo/extra-ipk\n" feeds.conf.default
 
+grep -q extraipk feeds.conf.default || \
+echo "src-git extraipk https://github.com/xiangfeidexiaohuo/extra-ipk" >> feeds.conf.default
