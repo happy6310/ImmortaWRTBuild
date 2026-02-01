@@ -86,7 +86,7 @@ UPDATE_PACKAGE() {
 # IPsec Server（官方仓库，根目录就是插件）
 # =========================
 
-UPDATE_PACKAGE "luci-app-ipsec-server" "Ivaneus/luci-app-ipsec-server" "main" "name" 
+UPDATE_PACKAGE "luci-app-ipsec-server" "Ivaneus/luci-app-ipsec-server" "main"
 
 # =========================
 # TurboACC（重点修复项）
